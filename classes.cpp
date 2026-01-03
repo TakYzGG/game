@@ -12,10 +12,10 @@ GenericEntity::GenericEntity(int x, int y, int speed, int radio) {
 }
 
 // -- Getters --
-int GenericEntity::getPosX() {return x;}
-int GenericEntity::getPosY() {return y;}
-int GenericEntity::getSpeed() {return speed;}
-int GenericEntity::getRadio() {return radio;}
+int GenericEntity::getPosX(void) {return x;}
+int GenericEntity::getPosY(void) {return y;}
+int GenericEntity::getSpeed(void) {return speed;}
+int GenericEntity::getRadio(void) {return radio;}
 
 // -- Setters --
 void GenericEntity::setPosX(int x) {
@@ -37,4 +37,26 @@ void GenericEntity::setRadio(int radio) {
 // -- Player Class --
 Player::Player(int x, int y, int speed, int radio) 
     :GenericEntity(x, y, speed, radio)
-    {}
+    {
+    }
+
+// -- Shoot Class --
+Shoot::Shoot(int x, int y, int speed, int radio, int distance, int travel)
+    :GenericEntity(x, y, speed, radio)
+    {
+        setDistance(distance);
+        setTravel(travel);
+    }
+
+// -- Getters --
+int Shoot::getDistance(void) {return distance;}
+int Shoot::getTravel(void) {return travel;}
+
+// -- Setters --
+void Shoot::setDistance(int distance) {
+    this->distance = distance;
+}
+
+void Shoot::setTravel(int travel) {
+    this->travel = travel;
+}

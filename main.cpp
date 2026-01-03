@@ -9,6 +9,7 @@ using namespace std;
 int main(void) {
     GenericEntity entity(0, 0, 1, 5);
     Player player(0, 0, 1, 5);
+    Shoot shoot(0, 0, 1, 5, 100, 0);
 
     cout << "GenericEntity: " << endl;
     cout << entity.getPosX() << endl;
@@ -23,6 +24,16 @@ int main(void) {
     cout << player.getPosY() << endl;
     cout << player.getSpeed() << endl;
     cout << player.getRadio() << endl;
+
+    cout << endl;
+
+    cout << "Shoot: " << endl;
+    cout << shoot.getPosX() << endl;
+    cout << shoot.getPosY() << endl;
+    cout << shoot.getSpeed() << endl;
+    cout << shoot.getRadio() << endl;
+    cout << shoot.getDistance() << endl;
+    cout << shoot.getTravel() << endl;
 
     return 0;
 }
