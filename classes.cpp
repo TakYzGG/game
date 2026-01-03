@@ -33,3 +33,8 @@ void GenericEntity::setSpeed(int speed) {
 void GenericEntity::setRadio(int radio) {
     this->radio = radio;
 }
+
+// -- Player Class --
+Player::Player(int x, int y, int speed, int radio) 
+    :GenericEntity(x, y, speed, radio)
+    {}

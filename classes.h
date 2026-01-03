@@ -28,4 +28,11 @@ class GenericEntity {
         void setRadio(int radio);
 };
 
+// -- Player Class --
+class Player: public GenericEntity {
+    public:
+        // -- Constructor --
+        Player(int x, int y, int speed, int radio);
+};
+
 #endif
