@@ -3,6 +3,9 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 
+#include <vector>
+using namespace std;
+
 // -- Generic Class --
 class GenericEntity {
     private:
@@ -29,12 +32,6 @@ class GenericEntity {
         void setRadio(int radio);
 };
 
-// -- Player Class --
-class Player: public GenericEntity {
-    public:
-        // -- Constructor --
-        Player(int x, int y, int speed, int radio);
-};
 
 // -- Shoot Class --
 class Shoot: public GenericEntity {
@@ -57,5 +54,22 @@ class Shoot: public GenericEntity {
 
         // -- Methods --
 };
+
+// -- Player Class --
+class Player: public GenericEntity {
+    public:
+        // -- Constructor --
+        Player(int x, int y, int speed, int radio);
+
+        // -- Methods --
+        void shoot(void);
+};
+
+// Variables
+extern vector<Shoot> shoots;
+
+// -- Funciones
+// -- Recorrer el vector de Shoots --
+void travelShoots(void);
 
 #endif

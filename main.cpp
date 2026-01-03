@@ -10,6 +10,11 @@ int main(void) {
     GenericEntity entity(0, 0, 1, 5);
     Player player(0, 0, 1, 5);
     Shoot shoot(0, 0, 1, 5, 100, 0);
+    player.shoot();
+    player.shoot();
+    player.shoot();
+    player.shoot();
+    player.shoot();
 
     cout << "GenericEntity: " << endl;
     cout << entity.getPosX() << endl;
@@ -34,6 +39,9 @@ int main(void) {
     cout << shoot.getRadio() << endl;
     cout << shoot.getDistance() << endl;
     cout << shoot.getTravel() << endl;
+
+    cout << endl;
+    travelShoots();
 
     return 0;
 }
