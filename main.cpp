@@ -25,12 +25,15 @@ int main(void) {
     while (!WindowShouldClose()) {
         // update
         player.move();
+        player.shoot();
+        travelShoots();
 
         // draw
         BeginDrawing();
             ClearBackground(WHITE);
             interface.drawHud();
             interface.drawPlayer();
+            interface.drawShoots();
         EndDrawing();
     }
 

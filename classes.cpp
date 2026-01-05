@@ -91,14 +91,27 @@ Player::Player(int x, int y, int speed, int radio)
 
 // -- Methods --
 void Player::move(void) {
-    if (IsKeyDown(KEY_W) && (getPosY() > 0)) setPosY(getPosY() - getSpeed());
-    if (IsKeyDown(KEY_A) && (getPosX() > 0)) setPosX(getPosX() - getSpeed());
-    if (IsKeyDown(KEY_S) && (getPosY() < GetScreenHeight())) setPosY(getPosY() + getSpeed());
-    if (IsKeyDown(KEY_D) && (getPosX() < GetScreenWidth())) setPosX(getPosX() + getSpeed());
+    if (IsKeyDown(KEY_W) && (getPosY() > 0)) {
+        setPosY(getPosY() - getSpeed());
+    }
+
+    if (IsKeyDown(KEY_A) && (getPosX() > 0)) {
+        setPosX(getPosX() - getSpeed());
+    }
+
+    if (IsKeyDown(KEY_S) && (getPosY() < GetScreenHeight())) {
+        setPosY(getPosY() + getSpeed());
+    }
+
+    if (IsKeyDown(KEY_D) && (getPosX() < GetScreenWidth())) {
+        setPosX(getPosX() + getSpeed());
+    }
 }
 
 void Player::shoot(void) {
-    shoots.push_back(new Shoot(10, 10, 1, 5, 100, 0));
+    if (IsKeyPressed(KEY_SPACE)) {
+        shoots.push_back(new Shoot(10, 10, 1, 5, 100, 0));
+    }
 }
 
 

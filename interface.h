@@ -18,6 +18,7 @@ class Interface {
         Interface(Player& player);
         void drawHud(void);
         void drawPlayer(void);
+        void drawShoots(void);
 };
 
 #endif
