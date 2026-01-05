@@ -1,54 +1,35 @@
 // -- Jugeo
 
 // -- Librerias --
-#include <iostream>
+#include <raylib.h>
 #include "classes.h"
+#include "interface.h"
 using namespace std;
 
 // -- Funcion principal --
 int main(void) {
-    GenericEntity entity(0, 0, 1, 5);
-    Player player(0, 0, 1, 5);
-    Shoot shoot(0, 0, 1, 5, 100, 0);
+    int screenWidth = 800;
+    int screenHeight = 600;
 
-    player.shoot();
-    player.shoot();
-    player.shoot();
-    player.shoot();
-    player.shoot();
+    InitWindow(screenWidth, screenHeight, "Game");
 
-    cout << "GenericEntity: " << endl;
-    cout << entity.getPosX() << endl;
-    cout << entity.getPosY() << endl;
-    cout << entity.getSpeed() << endl;
-    cout << entity.getRadio() << endl;
+    SetTargetFPS(60);
 
-    cout << endl;
+    // crear al jugador
+    Player player((screenWidth / 2), (screenHeight / 2), 1, 8);
+    Interface interface(player);
 
-    cout << "Player: " << endl;
-    cout << player.getPosX() << endl;
-    cout << player.getPosY() << endl;
-    cout << player.getSpeed() << endl;
-    cout << player.getRadio() << endl;
+    while (!WindowShouldClose()) {
+        // update
 
-    cout << endl;
-
-    cout << "Shoot: " << endl;
-    cout << shoot.getPosX() << endl;
-    cout << shoot.getPosY() << endl;
-    cout << shoot.getSpeed() << endl;
-    cout << shoot.getRadio() << endl;
-    cout << shoot.getDistance() << endl;
-    cout << shoot.getTravel() << endl;
-
-
-    cout << endl;
-    cout << shoots.size() << endl;
-    for (int i = 0; i <= 101; i++) {
-        travelShoots();
+        // draw
+        BeginDrawing();
+            ClearBackground(WHITE);
+            interface.drawPlayer();
+        EndDrawing();
     }
 
-    cout << shoots.size() << endl;
+    CloseWindow();
 
     return 0;
 }
