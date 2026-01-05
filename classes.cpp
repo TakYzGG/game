@@ -2,14 +2,12 @@
 
 // -- Librerias --
 #include "classes.h"
-#include <iostream>
-#include <algorithm>
-#include <memory>
+#include <bits/stdc++.h>
 #include <vector>
 using namespace std;
 
 // -- Variables --
-vector<unique_ptr<Shoot>> shoots;
+vector<Shoot*> shoots;
 
 // -- Generic Class --
 GenericEntity::GenericEntity(int x, int y, int speed, int radio) {
@@ -77,13 +75,11 @@ int Shoot::isDead(void) {
 }
 
 void Shoot::remove(void) {
-    shoots.erase(
-        remove_if(shoots.begin(), shoots.end(),
-            [](const unique_ptr<Shoot>& s) {
-                return s->isDead();
-            }),
-        shoots.end()
-    );
+    auto it = find(shoots.begin(), shoots.end(), this);
+    if (it != shoots.end() && (*it)->isDead()) {
+        delete *it;
+        shoots.erase(it);
+    }
 }
 
 // -- Player Class --
@@ -94,16 +90,15 @@ Player::Player(int x, int y, int speed, int radio)
 
 // -- Methods --
 void Player::shoot(void) {
-    shoots.push_back(make_unique<Shoot>(10, 10, 1, 5, 100, 0));
+    shoots.push_back(new Shoot(10, 10, 1, 5, 100, 0));
 }
 
 
 // -- Funciones --
 // -- Recorer el vector de Shoots --
 void travelShoots(void) {
-    for (auto& s : shoots) {
-        cout << s->getTravel() << endl;
-        s->move();
-        s->remove();
+    for (int i = 0; i < shoots.size(); i++) {
+        shoots[i]->move();
+        shoots[i]->remove();
     }
 }

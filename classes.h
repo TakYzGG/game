@@ -3,7 +3,7 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 
-#include <memory>
+//#include <memory>
 #include <vector>
 using namespace std;
 
@@ -70,8 +70,7 @@ class Player: public GenericEntity {
 };
 
 // Variables
-//extern vector<Shoot> shoots;
-extern vector<unique_ptr<Shoot>> shoots;
+extern vector<Shoot*> shoots;
 
 // -- Funciones
 // -- Recorrer el vector de Shoots --

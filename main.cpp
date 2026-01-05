@@ -11,12 +11,10 @@ int main(void) {
     Player player(0, 0, 1, 5);
     Shoot shoot(0, 0, 1, 5, 100, 0);
 
-    /*
     player.shoot();
     player.shoot();
     player.shoot();
     player.shoot();
-    */
     player.shoot();
 
     cout << "GenericEntity: " << endl;
@@ -43,11 +41,14 @@ int main(void) {
     cout << shoot.getDistance() << endl;
     cout << shoot.getTravel() << endl;
 
+
     cout << endl;
-    for (int i = 0; i <= 100; i++) {
+    cout << shoots.size() << endl;
+    for (int i = 0; i <= 101; i++) {
         travelShoots();
     }
 
+    cout << shoots.size() << endl;
 
     return 0;
 }
