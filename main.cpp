@@ -10,10 +10,13 @@ int main(void) {
     GenericEntity entity(0, 0, 1, 5);
     Player player(0, 0, 1, 5);
     Shoot shoot(0, 0, 1, 5, 100, 0);
+
+    /*
     player.shoot();
     player.shoot();
     player.shoot();
     player.shoot();
+    */
     player.shoot();
 
     cout << "GenericEntity: " << endl;
@@ -41,7 +44,10 @@ int main(void) {
     cout << shoot.getTravel() << endl;
 
     cout << endl;
-    travelShoots();
+    for (int i = 0; i <= 100; i++) {
+        travelShoots();
+    }
+
 
     return 0;
 }

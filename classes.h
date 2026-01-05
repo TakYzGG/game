@@ -3,6 +3,7 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 
+#include <memory>
 #include <vector>
 using namespace std;
 
@@ -37,8 +38,8 @@ class GenericEntity {
 class Shoot: public GenericEntity {
     private:
         // -- Atributes --
-        int distance;
-        int travel;
+        int distance; // distancia maxima a reccorer
+        int travel; // distancia recorrida
 
     public:
         // -- Constructor --
@@ -53,6 +54,9 @@ class Shoot: public GenericEntity {
         void setTravel(int travel);
 
         // -- Methods --
+        void move(void);
+        int isDead(void);
+        void remove(void);
 };
 
 // -- Player Class --
@@ -66,7 +70,8 @@ class Player: public GenericEntity {
 };
 
 // Variables
-extern vector<Shoot> shoots;
+//extern vector<Shoot> shoots;
+extern vector<unique_ptr<Shoot>> shoots;
 
 // -- Funciones
 // -- Recorrer el vector de Shoots --
