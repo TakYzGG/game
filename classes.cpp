@@ -58,12 +58,12 @@ int Shoot::getTravel(void) {return travel;}
 char Shoot::getDirection(void) {return direction;}
 
 // -- Setters --
-// obtener la distancia maxima que puede recorrer el disparo
+// modificar la distancia maxima que puede recorrer el disparo
 void Shoot::setDistance(int distance) {
     this->distance = distance;
 }
 
-// obtener la distancia recorrida por el disparo
+// modificar la distancia recorrida por el disparo
 void Shoot::setTravel(int travel) {
     this->travel = travel;
 }
