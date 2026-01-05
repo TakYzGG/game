@@ -62,9 +62,25 @@ class Shoot: public GenericEntity {
 
 // -- Player Class --
 class Player: public GenericEntity {
+    private:
+        // -- Atributes --
+        int shootSpeed = 1;
+        int shootRadio = 5;
+        int shootDistance = 100;
+
     public:
         // -- Constructor --
-        Player(int x, int y, int speed, int radio);
+        Player(int x, int y);
+
+        // -- Getters --
+        int getShootSpeed(void);
+        int getShootRadio(void);
+        int getShootDistance(void);
+        
+        // -- Setters --
+        void setShootSpeed(int speed);
+        void setShootRadio(int radio);
+        void setShootDistance(int distance);
 
         // -- Methods --
         void move(void);

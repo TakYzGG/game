@@ -134,10 +134,34 @@ void Shoot::remove(void) {
 
 // -- Player Class --
 // -- Constructor --
-Player::Player(int x, int y, int speed, int radio) 
-    :GenericEntity(x, y, speed, radio)
+Player::Player(int x, int y)
+    :GenericEntity(x, y, 1, 8)
     {
     }
+
+// -- Getters --
+int Player::getShootSpeed(void) {return shootSpeed;}
+int Player::getShootRadio(void) {return shootRadio;}
+int Player::getShootDistance(void) {return shootDistance;}
+
+// -- Setters --
+void Player::setShootSpeed(int speed) {
+    if (speed > 0) {
+        this->shootSpeed = speed;
+    }
+}
+
+void Player::setShootRadio(int radio) {
+    if (radio >= 5) {
+        this->shootRadio = radio;
+    }
+}
+
+void Player::setShootDistance(int distance) {
+    if (distance >= 50) {
+        this->shootDistance = distance;
+    }
+}
 
 // -- Methods --
 // movimiento del jugador
@@ -167,46 +191,58 @@ void Player::move(void) {
 void Player::shoot(void) {
     // arriba izquierda
     if (IsKeyDown(KEY_UP) && IsKeyDown(KEY_LEFT)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'E'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'E'));
         return;
     }
 
     // arriba derecha
     if (IsKeyDown(KEY_UP) && IsKeyDown(KEY_RIGHT)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'F'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'F'));
         return;
     }
 
     // abajo izquierda
     if (IsKeyDown(KEY_DOWN) && IsKeyDown(KEY_LEFT)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'G'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'G'));
         return;
     }
 
     // abajo derecha
     if (IsKeyDown(KEY_DOWN) && IsKeyDown(KEY_RIGHT)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'H'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'H'));
         return;
     }
 
     // arriba
     if (IsKeyDown(KEY_UP)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'A'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'A'));
+        return;
     }
 
     // izquierda
     if (IsKeyDown(KEY_LEFT)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'B'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'B'));
+        return;
     }
 
     // abajo
     if (IsKeyDown(KEY_DOWN)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'C'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'C'));
+        return;
     }
 
     // derecha
     if (IsKeyDown(KEY_RIGHT)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'D'));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
+                         getShootRadio(), getShootDistance(), 'D'));
+        return;
     }
 }
 
