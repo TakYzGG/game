@@ -18,10 +18,19 @@ Interface::Interface(Player& player)
 // -- Methods --
 // dibujar el hud debbug 
 void Interface::drawHudDebbug(void) {
-    DrawText(TextFormat("Player X: %d", player.getPosX()), 10, 10, 20, BLACK);
-    DrawText(TextFormat("Player Y: %d", player.getPosY()), 10, 30, 20, BLACK);
-    DrawText(TextFormat("Player id: %p", &player), 10, 50, 20, BLACK);
-    DrawText(TextFormat("Count shoots: %d", shoots.size()), 10, 70, 20, BLACK);
+    DrawText(TextFormat("Player X: %d", player.getPosX()), 10, 520, 20, BLACK);
+    DrawText(TextFormat("Player Y: %d", player.getPosY()), 10, 540, 20, BLACK);
+    DrawText(TextFormat("Player id: %p", &player), 10, 560, 20, BLACK);
+    DrawText(TextFormat("Count shoots: %d", shoots.size()), 10, 580, 20, BLACK);
+}
+
+// dibujar la hud del juego
+void Interface::drawHud(void) {
+    DrawText(TextFormat("Speed: %d", player.getSpeed()), 10, 10, 20, BLACK);
+    DrawText(TextFormat("Radio: %d", player.getRadio()), 10, 30, 20, BLACK);
+    DrawText(TextFormat("Shoot distance: %d", player.getShootDistance()), 10, 50, 20, BLACK);
+    DrawText(TextFormat("Shoot speed: %d", player.getShootSpeed()), 10, 70, 20, BLACK);
+    DrawText(TextFormat("Shoot radio: %d", player.getShootRadio()), 10, 90, 20, BLACK);
 }
 
 // dibujar al jugador

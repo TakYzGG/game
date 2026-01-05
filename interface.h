@@ -21,6 +21,7 @@ class Interface {
 
         // -- Methods --
         void drawHudDebbug(void);
+        void drawHud(void);
         void drawPlayer(void);
         void drawShoots(void);
 };
