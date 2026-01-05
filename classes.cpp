@@ -42,16 +42,18 @@ void GenericEntity::setRadio(int radio) {
 }
 
 // -- Shoot Class --
-Shoot::Shoot(int x, int y, int speed, int radio, int distance, int travel)
+Shoot::Shoot(int x, int y, int speed, int radio, int distance, char direction)
     :GenericEntity(x, y, speed, radio)
     {
         setDistance(distance);
         setTravel(travel);
+        this->direction = direction;
     }
 
 // -- Getters --
 int Shoot::getDistance(void) {return distance;}
 int Shoot::getTravel(void) {return travel;}
+char Shoot::getDirection(void) {return direction;}
 
 // -- Setters --
 void Shoot::setDistance(int distance) {
@@ -64,8 +66,33 @@ void Shoot::setTravel(int travel) {
 
 // -- Methods --
 void Shoot::move(void) {
-    // FIXMI: esto hay que mejorarlo para moverlo en la direccion del disparo
-    setPosX((getPosX() + getSpeed()));
+    switch (getDirection()) {
+        case 'A': setPosY(getPosY() - getSpeed()); break; // arriba
+        case 'B': setPosX(getPosX() - getSpeed()); break; // izquierda
+        case 'C': setPosY(getPosY() + getSpeed()); break; // abajo
+        case 'D': setPosX(getPosX() + getSpeed()); break; // derecha
+
+        // arriba izquierda
+        case 'E':
+                  setPosX(getPosX() - getSpeed());
+                  setPosY(getPosY() - getSpeed());
+                  break;
+
+        // arriba derecha
+        case 'F': setPosX(getPosX() + getSpeed());
+                  setPosY(getPosY() - getSpeed());
+                  break;
+
+        // abajo izquierda
+        case 'G': setPosX(getPosX() - getSpeed());
+                  setPosY(getPosY() + getSpeed());
+                  break;
+
+        // abajo derecha
+        case 'H': setPosX(getPosX() + getSpeed());
+                  setPosY(getPosY() + getSpeed());
+                  break;
+    }
     this->travel += getSpeed();
 }
 
@@ -111,8 +138,42 @@ void Player::move(void) {
 }
 
 void Player::shoot(void) {
-    if (IsKeyPressed(KEY_SPACE)) {
-        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 0));
+    // Direcciones diagonales
+    if (IsKeyDown(KEY_UP) && IsKeyDown(KEY_LEFT)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'E'));
+        return;
+    }
+
+    if (IsKeyDown(KEY_UP) && IsKeyDown(KEY_RIGHT)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'F'));
+        return;
+    }
+
+    if (IsKeyDown(KEY_DOWN) && IsKeyDown(KEY_LEFT)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'G'));
+        return;
+    }
+
+    if (IsKeyDown(KEY_DOWN) && IsKeyDown(KEY_RIGHT)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'H'));
+        return;
+    }
+
+    // Direcciones simples
+    if (IsKeyDown(KEY_UP)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'A'));
+    }
+
+    if (IsKeyDown(KEY_LEFT)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'B'));
+    }
+
+    if (IsKeyDown(KEY_DOWN)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'C'));
+    }
+
+    if (IsKeyDown(KEY_RIGHT)) {
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'D'));
     }
 }
 

@@ -39,15 +39,17 @@ class Shoot: public GenericEntity {
     private:
         // -- Atributes --
         int distance; // distancia maxima a reccorer
-        int travel; // distancia recorrida
+        int travel = 0; // distancia recorrida
+        char direction;
 
     public:
         // -- Constructor --
-        Shoot(int x, int y, int speed, int radio, int distance, int travel);
+        Shoot(int x, int y, int speed, int radio, int distance, char direction);
 
         // -- Getters --
         int getDistance(void);
         int getTravel(void);
+        char getDirection(void);
 
         // -- Setters --
         void setDistance(int distance);
