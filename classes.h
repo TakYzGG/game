@@ -66,6 +66,7 @@ class Player: public GenericEntity {
         Player(int x, int y, int speed, int radio);
 
         // -- Methods --
+        void move(void);
         void shoot(void);
 };
 

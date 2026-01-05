@@ -1,6 +1,7 @@
 // -- Jugeo
 
 // -- Librerias --
+#include <iostream>
 #include <raylib.h>
 #include "classes.h"
 #include "interface.h"
@@ -19,12 +20,16 @@ int main(void) {
     Player player((screenWidth / 2), (screenHeight / 2), 1, 8);
     Interface interface(player);
 
+    cout << &player << endl;
+
     while (!WindowShouldClose()) {
         // update
+        player.move();
 
         // draw
         BeginDrawing();
             ClearBackground(WHITE);
+            interface.drawHud();
             interface.drawPlayer();
         EndDrawing();
     }

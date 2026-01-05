@@ -12,10 +12,11 @@ class Interface {
         int screenWidth;
         int screenHeight;
         int FPS;
-        Player player;
+        Player& player;
 
     public:
         Interface(Player& player);
+        void drawHud(void);
         void drawPlayer(void);
 };
 

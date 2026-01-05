@@ -14,6 +14,12 @@ Interface::Interface(Player& player)
     {
     }
 
+void Interface::drawHud(void) {
+    DrawText(TextFormat("Player X: %d", player.getPosX()), 10, 10, 20, BLACK);
+    DrawText(TextFormat("Player Y: %d", player.getPosY()), 10, 30, 20, BLACK);
+    DrawText(TextFormat("Player id: %p", &player), 10, 50, 20, BLACK);
+}
+
 void Interface::drawPlayer(void) {
     DrawCircle(player.getPosX(), player.getPosY(), player.getRadio(), RED);
 }
