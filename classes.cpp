@@ -64,6 +64,8 @@ void Shoot::setTravel(int travel) {
 
 // -- Methods --
 void Shoot::move(void) {
+    // FIXMI: esto hay que mejorarlo para moverlo en la direccion del disparo
+    setPosX((getPosX() + getSpeed()));
     this->travel += getSpeed();
 }
 
@@ -110,7 +112,7 @@ void Player::move(void) {
 
 void Player::shoot(void) {
     if (IsKeyPressed(KEY_SPACE)) {
-        shoots.push_back(new Shoot(10, 10, 1, 5, 100, 0));
+        shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 0));
     }
 }
 
