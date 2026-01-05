@@ -9,14 +9,18 @@
 // -- Clase de la interfaz --
 class Interface {
     private:
+        // -- Atributes --
         int screenWidth;
         int screenHeight;
         int FPS;
         Player& player;
 
     public:
+        // -- Constructor
         Interface(Player& player);
-        void drawHud(void);
+
+        // -- Methods --
+        void drawHudDebbug(void);
         void drawPlayer(void);
         void drawShoots(void);
 };

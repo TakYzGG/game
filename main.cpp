@@ -31,7 +31,7 @@ int main(void) {
         // draw
         BeginDrawing();
             ClearBackground(WHITE);
-            interface.drawHud();
+            interface.drawHudDebbug();
             interface.drawShoots();
             interface.drawPlayer();
         EndDrawing();

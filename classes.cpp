@@ -8,9 +8,10 @@
 using namespace std;
 
 // -- Variables --
-vector<Shoot*> shoots;
+vector<Shoot*> shoots; // vector con los disparos generados por el jugador
 
 // -- Generic Class --
+// -- Constructor --
 GenericEntity::GenericEntity(int x, int y, int speed, int radio) {
     setPosX(x);
     setPosY(y);
@@ -42,6 +43,7 @@ void GenericEntity::setRadio(int radio) {
 }
 
 // -- Shoot Class --
+// -- Constructor --
 Shoot::Shoot(int x, int y, int speed, int radio, int distance, char direction)
     :GenericEntity(x, y, speed, radio)
     {
@@ -56,21 +58,35 @@ int Shoot::getTravel(void) {return travel;}
 char Shoot::getDirection(void) {return direction;}
 
 // -- Setters --
+// obtener la distancia maxima que puede recorrer el disparo
 void Shoot::setDistance(int distance) {
     this->distance = distance;
 }
 
+// obtener la distancia recorrida por el disparo
 void Shoot::setTravel(int travel) {
     this->travel = travel;
 }
 
 // -- Methods --
+// movimiento de los disparos
 void Shoot::move(void) {
     switch (getDirection()) {
-        case 'A': setPosY(getPosY() - getSpeed()); break; // arriba
-        case 'B': setPosX(getPosX() - getSpeed()); break; // izquierda
-        case 'C': setPosY(getPosY() + getSpeed()); break; // abajo
-        case 'D': setPosX(getPosX() + getSpeed()); break; // derecha
+        // arriba
+        case 'A': setPosY(getPosY() - getSpeed());
+                  break;
+
+        // izquierda
+        case 'B': setPosX(getPosX() - getSpeed());
+                  break;
+
+        // abajo
+        case 'C': setPosY(getPosY() + getSpeed());
+                  break;
+
+        // derecha
+        case 'D': setPosX(getPosX() + getSpeed());
+                  break;
 
         // arriba izquierda
         case 'E':
@@ -93,9 +109,12 @@ void Shoot::move(void) {
                   setPosY(getPosY() + getSpeed());
                   break;
     }
+
+    // sumar distancia recorrida
     this->travel += getSpeed();
 }
 
+// comprobar si el disparo ya recorrio la distancia maxima
 int Shoot::isDead(void) {
     if (getTravel() == getDistance()) {
         return 1;
@@ -104,6 +123,7 @@ int Shoot::isDead(void) {
     return 0;
 }
 
+// eliminar un disparo del vector
 void Shoot::remove(void) {
     auto it = find(shoots.begin(), shoots.end(), this);
     if (it != shoots.end() && (*it)->isDead()) {
@@ -113,65 +133,78 @@ void Shoot::remove(void) {
 }
 
 // -- Player Class --
+// -- Constructor --
 Player::Player(int x, int y, int speed, int radio) 
     :GenericEntity(x, y, speed, radio)
     {
     }
 
 // -- Methods --
+// movimiento del jugador
 void Player::move(void) {
+    // arriba
     if (IsKeyDown(KEY_W) && (getPosY() > 0)) {
         setPosY(getPosY() - getSpeed());
     }
 
+    // izquierda
     if (IsKeyDown(KEY_A) && (getPosX() > 0)) {
         setPosX(getPosX() - getSpeed());
     }
 
+    // abajo
     if (IsKeyDown(KEY_S) && (getPosY() < GetScreenHeight())) {
         setPosY(getPosY() + getSpeed());
     }
 
+    // derecha
     if (IsKeyDown(KEY_D) && (getPosX() < GetScreenWidth())) {
         setPosX(getPosX() + getSpeed());
     }
 }
 
+// hacer que el jugador pueda disparar
 void Player::shoot(void) {
-    // Direcciones diagonales
+    // arriba izquierda
     if (IsKeyDown(KEY_UP) && IsKeyDown(KEY_LEFT)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'E'));
         return;
     }
 
+    // arriba derecha
     if (IsKeyDown(KEY_UP) && IsKeyDown(KEY_RIGHT)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'F'));
         return;
     }
 
+    // abajo izquierda
     if (IsKeyDown(KEY_DOWN) && IsKeyDown(KEY_LEFT)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'G'));
         return;
     }
 
+    // abajo derecha
     if (IsKeyDown(KEY_DOWN) && IsKeyDown(KEY_RIGHT)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'H'));
         return;
     }
 
-    // Direcciones simples
+    // arriba
     if (IsKeyDown(KEY_UP)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'A'));
     }
 
+    // izquierda
     if (IsKeyDown(KEY_LEFT)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'B'));
     }
 
+    // abajo
     if (IsKeyDown(KEY_DOWN)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'C'));
     }
 
+    // derecha
     if (IsKeyDown(KEY_RIGHT)) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), 1, 5, 100, 'D'));
     }

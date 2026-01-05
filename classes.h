@@ -33,7 +33,6 @@ class GenericEntity {
         void setRadio(int radio);
 };
 
-
 // -- Shoot Class --
 class Shoot: public GenericEntity {
     private:
