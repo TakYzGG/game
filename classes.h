@@ -53,6 +53,7 @@ class Shoot: public GenericEntity {
         // -- Setters --
         void setDistance(int distance);
         void setTravel(int travel);
+        void setDirection(char direction);
 
         // -- Methods --
         void move(void);

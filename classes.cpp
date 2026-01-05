@@ -49,7 +49,7 @@ Shoot::Shoot(int x, int y, int speed, int radio, int distance, char direction)
     {
         setDistance(distance);
         setTravel(travel);
-        this->direction = direction;
+        setDirection(direction);
     }
 
 // -- Getters --
@@ -66,6 +66,19 @@ void Shoot::setDistance(int distance) {
 // modificar la distancia recorrida por el disparo
 void Shoot::setTravel(int travel) {
     this->travel = travel;
+}
+
+void Shoot::setDirection(char direction) {
+    switch (direction) {
+        case 'A': this->direction = direction; break;
+        case 'B': this->direction = direction; break;
+        case 'C': this->direction = direction; break;
+        case 'D': this->direction = direction; break;
+        case 'E': this->direction = direction; break;
+        case 'F': this->direction = direction; break;
+        case 'G': this->direction = direction; break;
+        case 'H': this->direction = direction; break;
+    }
 }
 
 // -- Methods --
