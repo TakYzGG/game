@@ -200,6 +200,15 @@ void Player::move(void) {
     }
 }
 
+// comprobar si el jugador esta dispando
+int Player::isFiring(void) {
+    if (IsKeyDown(KEY_UP)) return 1;
+    if (IsKeyDown(KEY_LEFT)) return 1;
+    if (IsKeyDown(KEY_DOWN)) return 1;
+    if (IsKeyDown(KEY_RIGHT)) return 1;
+    return 0;
+}
+
 // hacer que el jugador pueda disparar
 void Player::shoot(void) {
     // arriba izquierda

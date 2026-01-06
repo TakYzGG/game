@@ -22,10 +22,31 @@ int main(void) {
 
     cout << &player << endl;
 
+    float cooldown = 0.5f;
+    float timer = 0.0f;
+
+    int firing = 0;
+    int wasFiring = 0;
+
     while (!WindowShouldClose()) {
         // update
+        timer += GetFrameTime();
         player.move();
-        player.shoot();
+
+        firing = player.isFiring();
+
+        if (firing && !wasFiring) {
+            player.shoot();
+            timer = 0.0f;
+        }
+
+        else if (firing && timer >= cooldown) {
+            player.shoot();
+            timer = 0.0f;
+        }
+
+        wasFiring = firing;
+
         travelShoots();
 
         // draw
