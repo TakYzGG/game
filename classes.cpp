@@ -131,7 +131,7 @@ void Shoot::move(void) {
 
 // comprobar si el disparo ya recorrio la distancia maxima
 int Shoot::isDead(void) {
-    if (getTravel() == getDistance()) {
+    if (getTravel() >= getDistance()) {
         return 1;
     }
 
