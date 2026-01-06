@@ -11,25 +11,25 @@ using namespace std;
 class GenericEntity {
     private:
         // -- Atributes --
-        int x;
-        int y;
-        int speed;
+        float x;
+        float y;
+        float speed;
         int radio;
 
     public:
         // -- Constructor --
-        GenericEntity(int x, int y, int speed, int radio);
+        GenericEntity(float x, float y, float speed, int radio);
 
         // -- Getters --
-        int getPosX(void);
-        int getPosY(void);
-        int getSpeed(void);
+        float getPosX(void);
+        float getPosY(void);
+        float getSpeed(void);
         int getRadio(void);
 
         // -- Setters --
-        void setPosX(int x);
-        void setPosY(int y);
-        void setSpeed(int speed);
+        void setPosX(float x);
+        void setPosY(float y);
+        void setSpeed(float speed);
         void setRadio(int radio);
 };
 
@@ -37,22 +37,22 @@ class GenericEntity {
 class Shoot: public GenericEntity {
     private:
         // -- Atributes --
-        int distance; // distancia maxima a reccorer
-        int travel = 0; // distancia recorrida
+        float distance; // distancia maxima a reccorer
+        float travel = 0; // distancia recorrida
         char direction;
 
     public:
         // -- Constructor --
-        Shoot(int x, int y, int speed, int radio, int distance, char direction);
+        Shoot(float x, float y, float speed, int radio, float distance, char direction);
 
         // -- Getters --
-        int getDistance(void);
-        int getTravel(void);
+        float getDistance(void);
+        float getTravel(void);
         char getDirection(void);
 
         // -- Setters --
-        void setDistance(int distance);
-        void setTravel(int travel);
+        void setDistance(float distance);
+        void setTravel(float travel);
         void setDirection(char direction);
 
         // -- Methods --
@@ -65,8 +65,8 @@ class Shoot: public GenericEntity {
 class Player: public GenericEntity {
     private:
         // -- Atributes --
-        float cooldown = 0.5; // tiempo entre disparo y disparo
-        int shootSpeed = 1;
+        float cooldown = 0.5f; // tiempo entre disparo y disparo
+        int shootSpeed = 1.0f;
         int shootRadio = 5;
         int shootDistance = 100;
 

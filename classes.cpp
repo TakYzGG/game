@@ -12,7 +12,7 @@ vector<Shoot*> shoots; // vector con los disparos generados por el jugador
 
 // -- Generic Class --
 // -- Constructor --
-GenericEntity::GenericEntity(int x, int y, int speed, int radio) {
+GenericEntity::GenericEntity(float x, float y, float speed, int radio) {
     setPosX(x);
     setPosY(y);
     setSpeed(speed);
@@ -20,21 +20,21 @@ GenericEntity::GenericEntity(int x, int y, int speed, int radio) {
 }
 
 // -- Getters --
-int GenericEntity::getPosX(void) {return x;}
-int GenericEntity::getPosY(void) {return y;}
-int GenericEntity::getSpeed(void) {return speed;}
+float GenericEntity::getPosX(void) {return x;}
+float GenericEntity::getPosY(void) {return y;}
+float GenericEntity::getSpeed(void) {return speed;}
 int GenericEntity::getRadio(void) {return radio;}
 
 // -- Setters --
-void GenericEntity::setPosX(int x) {
+void GenericEntity::setPosX(float x) {
     this->x = x;
 }
 
-void GenericEntity::setPosY(int y) {
+void GenericEntity::setPosY(float y) {
     this->y = y;
 }
 
-void GenericEntity::setSpeed(int speed) {
+void GenericEntity::setSpeed(float speed) {
     this->speed = speed;
 }
 
@@ -44,7 +44,7 @@ void GenericEntity::setRadio(int radio) {
 
 // -- Shoot Class --
 // -- Constructor --
-Shoot::Shoot(int x, int y, int speed, int radio, int distance, char direction)
+Shoot::Shoot(float x, float y, float speed, int radio, float distance, char direction)
     :GenericEntity(x, y, speed, radio)
     {
         setDistance(distance);
@@ -53,18 +53,18 @@ Shoot::Shoot(int x, int y, int speed, int radio, int distance, char direction)
     }
 
 // -- Getters --
-int Shoot::getDistance(void) {return distance;}
-int Shoot::getTravel(void) {return travel;}
+float Shoot::getDistance(void) {return distance;}
+float Shoot::getTravel(void) {return travel;}
 char Shoot::getDirection(void) {return direction;}
 
 // -- Setters --
 // modificar la distancia maxima que puede recorrer el disparo
-void Shoot::setDistance(int distance) {
+void Shoot::setDistance(float distance) {
     this->distance = distance;
 }
 
 // modificar la distancia recorrida por el disparo
-void Shoot::setTravel(int travel) {
+void Shoot::setTravel(float travel) {
     this->travel = travel;
 }
 
@@ -84,47 +84,49 @@ void Shoot::setDirection(char direction) {
 // -- Methods --
 // movimiento de los disparos
 void Shoot::move(void) {
+    float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+
     switch (getDirection()) {
         // arriba
-        case 'A': setPosY(getPosY() - getSpeed());
+        case 'A': setPosY(getPosY() - speed);
                   break;
 
         // izquierda
-        case 'B': setPosX(getPosX() - getSpeed());
+        case 'B': setPosX(getPosX() - speed);
                   break;
 
         // abajo
-        case 'C': setPosY(getPosY() + getSpeed());
+        case 'C': setPosY(getPosY() + speed);
                   break;
 
         // derecha
-        case 'D': setPosX(getPosX() + getSpeed());
+        case 'D': setPosX(getPosX() + speed);
                   break;
 
         // arriba izquierda
         case 'E':
-                  setPosX(getPosX() - getSpeed());
-                  setPosY(getPosY() - getSpeed());
+                  setPosX(getPosX() - speed);
+                  setPosY(getPosY() - speed);
                   break;
 
         // arriba derecha
-        case 'F': setPosX(getPosX() + getSpeed());
-                  setPosY(getPosY() - getSpeed());
+        case 'F': setPosX(getPosX() + speed);
+                  setPosY(getPosY() - speed);
                   break;
 
         // abajo izquierda
-        case 'G': setPosX(getPosX() - getSpeed());
-                  setPosY(getPosY() + getSpeed());
+        case 'G': setPosX(getPosX() - speed);
+                  setPosY(getPosY() + speed);
                   break;
 
         // abajo derecha
-        case 'H': setPosX(getPosX() + getSpeed());
-                  setPosY(getPosY() + getSpeed());
+        case 'H': setPosX(getPosX() + speed);
+                  setPosY(getPosY() + speed);
                   break;
     }
 
     // sumar distancia recorrida
-    this->travel += getSpeed();
+    this->travel += speed;
 }
 
 // comprobar si el disparo ya recorrio la distancia maxima
@@ -186,24 +188,25 @@ void Player::setShootDistance(int distance) {
 // -- Methods --
 // movimiento del jugador
 void Player::move(void) {
+    float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
     // arriba
     if (IsKeyDown(KEY_W) && (getPosY() > 0)) {
-        setPosY(getPosY() - getSpeed());
+        setPosY(getPosY() - speed);
     }
 
     // izquierda
     if (IsKeyDown(KEY_A) && (getPosX() > 0)) {
-        setPosX(getPosX() - getSpeed());
+        setPosX(getPosX() - speed);
     }
 
     // abajo
     if (IsKeyDown(KEY_S) && (getPosY() < GetScreenHeight())) {
-        setPosY(getPosY() + getSpeed());
+        setPosY(getPosY() + speed);
     }
 
     // derecha
     if (IsKeyDown(KEY_D) && (getPosX() < GetScreenWidth())) {
-        setPosX(getPosX() + getSpeed());
+        setPosX(getPosX() + speed);
     }
 }
 
