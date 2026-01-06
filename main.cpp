@@ -22,7 +22,6 @@ int main(void) {
 
     cout << &player << endl;
 
-    float cooldown = 0.5f;
     float timer = 0.0f;
 
     int firing = 0;
@@ -40,7 +39,7 @@ int main(void) {
             timer = 0.0f;
         }
 
-        else if (firing && timer >= cooldown) {
+        else if (firing && (timer >= player.getCooldown())) {
             player.shoot();
             timer = 0.0f;
         }

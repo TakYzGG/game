@@ -153,11 +153,18 @@ Player::Player()
     }
 
 // -- Getters --
+float Player::getCooldown(void) {return cooldown;}
 int Player::getShootSpeed(void) {return shootSpeed;}
 int Player::getShootRadio(void) {return shootRadio;}
 int Player::getShootDistance(void) {return shootDistance;}
 
 // -- Setters --
+void Player::setCooldown(float cooldown) {
+    if (cooldown >= 0.1) {
+        this->cooldown = cooldown;
+    }
+}
+
 void Player::setShootSpeed(int speed) {
     if (speed > 0) {
         this->shootSpeed = speed;

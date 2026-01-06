@@ -65,6 +65,7 @@ class Shoot: public GenericEntity {
 class Player: public GenericEntity {
     private:
         // -- Atributes --
+        float cooldown = 0.5; // tiempo entre disparo y disparo
         int shootSpeed = 1;
         int shootRadio = 5;
         int shootDistance = 100;
@@ -74,11 +75,13 @@ class Player: public GenericEntity {
         Player();
 
         // -- Getters --
+        float getCooldown(void);
         int getShootSpeed(void);
         int getShootRadio(void);
         int getShootDistance(void);
         
         // -- Setters --
+        void setCooldown(float cooldown);
         void setShootSpeed(int speed);
         void setShootRadio(int radio);
         void setShootDistance(int distance);
