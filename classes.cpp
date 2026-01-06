@@ -147,8 +147,8 @@ void Shoot::remove(void) {
 
 // -- Player Class --
 // -- Constructor --
-Player::Player(int x, int y)
-    :GenericEntity(x, y, 1, 8)
+Player::Player()
+    :GenericEntity((GetScreenWidth() / 2), (GetScreenHeight() / 2), 1, 8)
     {
     }
 
@@ -258,7 +258,6 @@ void Player::shoot(void) {
         return;
     }
 }
-
 
 // -- Funciones --
 // -- Recorer el vector de Shoots --

@@ -17,7 +17,7 @@ int main(void) {
     SetTargetFPS(60);
 
     // crear al jugador
-    Player player((screenWidth / 2), (screenHeight / 2));
+    Player player;
     Interface interface(player);
 
     cout << &player << endl;

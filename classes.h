@@ -71,7 +71,7 @@ class Player: public GenericEntity {
 
     public:
         // -- Constructor --
-        Player(int x, int y);
+        Player();
 
         // -- Getters --
         int getShootSpeed(void);
