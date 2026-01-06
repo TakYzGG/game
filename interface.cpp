@@ -41,6 +41,12 @@ void Interface::drawPlayer(void) {
     DrawCircle(player.getPosX(), player.getPosY(), player.getRadio(), RED);
 }
 
+void Interface::drawEnemys(void) {
+    for (int i = 0; i < enemys.size(); i++) {
+        DrawCircle(enemys[i]->getPosX(), enemys[i]->getPosY(), enemys[i]->getRadio(), GREEN);
+    }
+}
+
 // dibujar los disparos
 void Interface::drawShoots(void) {
     for (int i = 0; i < shoots.size(); i++) {

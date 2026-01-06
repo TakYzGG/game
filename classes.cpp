@@ -9,6 +9,7 @@ using namespace std;
 
 // -- Variables --
 vector<Shoot*> shoots; // vector con los disparos generados por el jugador
+vector<Enemy*> enemys;
 
 // -- Generic Class --
 // -- Constructor --
@@ -278,11 +279,52 @@ void Player::shoot(void) {
     }
 }
 
+// -- Enemy Class --
+// -- Constructor --
+Enemy::Enemy(int x, int y)
+    :GenericEntity(x, y, 1, 8)
+    {
+    }
+
+// comprobar si el disparo ya recorrio la distancia maxima
+int Enemy::isDead(void) {
+  for (int i = 0; i < shoots.size(); i++)
+    {
+        float dx = getPosX() - shoots[i]->getPosX();
+        float dy = getPosY() - shoots[i]->getPosY();
+
+        float distSq = dx*dx + dy*dy;
+        float radiusSum = getRadio() + shoots[i]->getRadio();
+
+        if (distSq <= radiusSum * radiusSum)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// eliminar un disparo del vector
+void Enemy::remove(void) {
+    auto it = find(enemys.begin(), enemys.end(), this);
+    if (it != enemys.end() && (*it)->isDead()) {
+        delete *it;
+        enemys.erase(it);
+    }
+}
+
 // -- Funciones --
 // -- Recorer el vector de Shoots --
 void travelShoots(void) {
     for (int i = 0; i < shoots.size(); i++) {
         shoots[i]->move();
         shoots[i]->remove();
+    }
+}
+
+void removeEnemys(void) {
+    for (int i = 0; i < enemys.size(); i++) {
+        //enemys[i]->move();
+        enemys[i]->remove();
     }
 }

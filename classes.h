@@ -92,11 +92,25 @@ class Player: public GenericEntity {
         void shoot(void);
 };
 
+// -- Enemy Class --
+class Enemy: public GenericEntity {
+    public:
+        // -- Constructor --
+        Enemy(int x, int y);
+
+        int isDead(void);
+        void remove(void);
+};
+
 // Variables
 extern vector<Shoot*> shoots;
+extern vector<Enemy*> enemys;
 
 // -- Funciones
 // -- Recorrer el vector de Shoots --
 void travelShoots(void);
+
+// -- Eliminar a los enemigos --
+void removeEnemys();
 
 #endif

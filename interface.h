@@ -23,6 +23,7 @@ class Interface {
         void drawHudDebbug(void);
         void drawHud(void);
         void drawPlayer(void);
+        void drawEnemys(void);
         void drawShoots(void);
 };
 

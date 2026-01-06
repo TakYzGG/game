@@ -18,6 +18,7 @@ int main(void) {
 
     // crear al jugador
     Player player;
+    enemys.push_back(new Enemy(50, 50));
     Interface interface(player);
 
     cout << &player << endl;
@@ -46,6 +47,7 @@ int main(void) {
 
         wasFiring = firing;
 
+        if (enemys.size() > 0) removeEnemys();
         travelShoots();
 
         // draw
@@ -55,6 +57,7 @@ int main(void) {
             interface.drawHud();
             interface.drawShoots();
             interface.drawPlayer();
+            interface.drawEnemys();
         EndDrawing();
     }
 
