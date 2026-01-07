@@ -48,7 +48,7 @@ int main(void) {
         wasFiring = firing;
 
         if (enemys.size() > 0) removeEnemys();
-        travelShoots();
+        if (shoots.size() > 0) travelShoots();
 
         // draw
         BeginDrawing();

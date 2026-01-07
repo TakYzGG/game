@@ -27,18 +27,22 @@ float GenericEntity::getSpeed(void) {return speed;}
 int GenericEntity::getRadio(void) {return radio;}
 
 // -- Setters --
+// modificar posicion x
 void GenericEntity::setPosX(float x) {
     this->x = x;
 }
 
+// modificar posicion y
 void GenericEntity::setPosY(float y) {
     this->y = y;
 }
 
+// modificar velocidad
 void GenericEntity::setSpeed(float speed) {
     this->speed = speed;
 }
 
+// modificar radio
 void GenericEntity::setRadio(int radio) {
     this->radio = radio;
 }
@@ -69,6 +73,7 @@ void Shoot::setTravel(float travel) {
     this->travel = travel;
 }
 
+// direcciones validas para los disparos
 void Shoot::setDirection(char direction) {
     switch (direction) {
         case 'A': this->direction = direction; break;
@@ -162,24 +167,28 @@ int Player::getShootRadio(void) {return shootRadio;}
 int Player::getShootDistance(void) {return shootDistance;}
 
 // -- Setters --
+// modificar el cooldown entre disparos
 void Player::setCooldown(float cooldown) {
     if (cooldown >= 0.1) {
         this->cooldown = cooldown;
     }
 }
 
+// modificar la velocidad de los disparos
 void Player::setShootSpeed(int speed) {
     if (speed > 0) {
         this->shootSpeed = speed;
     }
 }
 
+// modificar el radio de los disparos
 void Player::setShootRadio(int radio) {
     if (radio >= 5) {
         this->shootRadio = radio;
     }
 }
 
+// modificar la distancia maxima de los disparos
 void Player::setShootDistance(int distance) {
     if (distance >= 50) {
         this->shootDistance = distance;
@@ -290,12 +299,14 @@ Enemy::Enemy(int x, int y)
 int Enemy::isDead(void) {
   for (int i = 0; i < shoots.size(); i++)
     {
+        // diferencia de posiciones
         float dx = getPosX() - shoots[i]->getPosX();
         float dy = getPosY() - shoots[i]->getPosY();
 
         float distSq = dx*dx + dy*dy;
         float radiusSum = getRadio() + shoots[i]->getRadio();
 
+        // comprobar si el disparo esta dentro del radio del enemigo
         if (distSq <= radiusSum * radiusSum)
         {
             return 1;
@@ -322,9 +333,9 @@ void travelShoots(void) {
     }
 }
 
+// -- Eliminar a los enemigos del vector --
 void removeEnemys(void) {
     for (int i = 0; i < enemys.size(); i++) {
-        //enemys[i]->move();
         enemys[i]->remove();
     }
 }

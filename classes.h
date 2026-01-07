@@ -11,10 +11,10 @@ using namespace std;
 class GenericEntity {
     private:
         // -- Atributes --
-        float x;
-        float y;
-        float speed;
-        int radio;
+        float x; // posicion x
+        float y; // posicion y
+        float speed; // velocidad
+        int radio; // radio
 
     public:
         // -- Constructor --
@@ -39,7 +39,7 @@ class Shoot: public GenericEntity {
         // -- Atributes --
         float distance; // distancia maxima a reccorer
         float travel = 0; // distancia recorrida
-        char direction;
+        char direction; // direccion del disapro
 
     public:
         // -- Constructor --
@@ -66,9 +66,9 @@ class Player: public GenericEntity {
     private:
         // -- Atributes --
         float cooldown = 0.5f; // tiempo entre disparo y disparo
-        int shootSpeed = 1.0f;
-        int shootRadio = 5;
-        int shootDistance = 100;
+        int shootSpeed = 1.0f; // velocidad del disparo
+        int shootRadio = 5; // radio del disparo
+        int shootDistance = 100; // distancia maxima del disparo
 
     public:
         // -- Constructor --
@@ -98,6 +98,7 @@ class Enemy: public GenericEntity {
         // -- Constructor --
         Enemy(int x, int y);
 
+        // -- Methods --
         int isDead(void);
         void remove(void);
 };
