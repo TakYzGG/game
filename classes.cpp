@@ -61,6 +61,7 @@ Shoot::Shoot(float x, float y, float speed, int radio, float distance, char dire
 float Shoot::getDistance(void) {return distance;}
 float Shoot::getTravel(void) {return travel;}
 char Shoot::getDirection(void) {return direction;}
+int Shoot::getStatus(void) {return status;}
 
 // -- Setters --
 // modificar la distancia maxima que puede recorrer el disparo
@@ -85,6 +86,11 @@ void Shoot::setDirection(char direction) {
         case 'G': this->direction = direction; break;
         case 'H': this->direction = direction; break;
     }
+}
+
+// cambiar el estado del disparo
+void Shoot::setStatus(int status) {
+    this->status = status;
 }
 
 // -- Methods --
@@ -136,18 +142,16 @@ void Shoot::move(void) {
 }
 
 // comprobar si el disparo ya recorrio la distancia maxima
-int Shoot::isDead(void) {
+void Shoot::isDead(void) {
     if (getTravel() >= getDistance()) {
-        return 1;
+        setStatus(1);
     }
-
-    return 0;
 }
 
 // eliminar un disparo del vector
 void Shoot::remove(void) {
     auto it = find(shoots.begin(), shoots.end(), this);
-    if (it != shoots.end() && (*it)->isDead()) {
+    if (it != shoots.end() && (*it)->getStatus()) {
         delete *it;
         shoots.erase(it);
     }
@@ -309,6 +313,7 @@ int Enemy::isDead(void) {
         // comprobar si el disparo esta dentro del radio del enemigo
         if (distSq <= radiusSum * radiusSum)
         {
+            shoots[i]->setStatus(1);
             return 1;
         }
     }

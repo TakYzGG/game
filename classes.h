@@ -40,6 +40,7 @@ class Shoot: public GenericEntity {
         float distance; // distancia maxima a reccorer
         float travel = 0; // distancia recorrida
         char direction; // direccion del disapro
+        int status = 0; // estado del disparo (1 muerto, 0 vivo)
 
     public:
         // -- Constructor --
@@ -49,15 +50,17 @@ class Shoot: public GenericEntity {
         float getDistance(void);
         float getTravel(void);
         char getDirection(void);
+        int getStatus(void);
 
         // -- Setters --
         void setDistance(float distance);
         void setTravel(float travel);
         void setDirection(char direction);
+        void setStatus(int status);
 
         // -- Methods --
         void move(void);
-        int isDead(void);
+        void isDead(void);
         void remove(void);
 };
 
