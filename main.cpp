@@ -3,8 +3,7 @@
 // -- Librerias --
 #include <iostream>
 #include <raylib.h>
-#include "classes.h"
-#include "interface.h"
+#include "scenes.h"
 using namespace std;
 
 // -- Funcion principal --
@@ -17,50 +16,15 @@ int main(void) {
     SetTargetFPS(60);
 
     // crear al jugador
-    Player player;
-    enemys.push_back(new Enemy(50, 50));
-    Interface interface(player);
-
-    cout << &player << endl;
-
-    float timer = 0.0f;
-
-    int firing = 0;
-    int wasFiring = 0;
+    Game game;
 
     while (!WindowShouldClose()) {
         // update
-        timer += GetFrameTime();
-        player.move();
-
-        firing = player.isFiring();
-
-        if (firing && !wasFiring) {
-            player.shoot();
-            timer = 0.0f;
-        }
-
-        else if (firing && (timer >= player.getCooldown())) {
-            player.shoot();
-            timer = 0.0f;
-        }
-
-        wasFiring = firing;
-
-    for (int i = 0; i < enemys.size(); i++) {
-        enemys[i]->move(player);
-        enemys[i]->remove();
-    }
-        if (shoots.size() > 0) travelShoots();
+        game.update();
 
         // draw
         BeginDrawing();
-            ClearBackground(WHITE);
-            interface.drawHudDebbug();
-            interface.drawHud();
-            interface.drawShoots();
-            interface.drawPlayer();
-            interface.drawEnemys();
+            game.draw();
         EndDrawing();
     }
 

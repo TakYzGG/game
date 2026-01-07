@@ -299,7 +299,7 @@ Enemy::Enemy(int x, int y)
     {
     }
 
-// 
+// mover al enemigo a la posicion del jugador
 void Enemy::move(Player &player) {
     if (getPosX() <= player.getPosX()) {
         float new_x = player.getPosX() - getPosX();
