@@ -6,7 +6,7 @@
 
 ## Instalacion
 - compilar todos los archivos .cpp
-- comando (linux): 'g++ *.cpp'
+- comando (linux): 'g++ *.cpp -lraylib'
 
 ## Variables globales
 - vector<Shoot*> shoots: guarda los disparos generados por el jugador
@@ -50,6 +50,7 @@ Atributos:
     - 'F': arriba derecha
     - 'G': abajo izquierda
     - 'H': abajo derecha
+- int status: estado del disparo (1 si se destruye, 0 si no)
 
 Constructor:
 - float x;
@@ -63,16 +64,18 @@ Getters:
 - getDistance(): retorna un float con la distancia maxima que puede recorrer
 - getTravel(): retorna un float con la distancia recorrida
 - getDirection(): retorna un char con la direccion
+- getStatus(): retorna un int con el estado
 
 Setters:
 - setDistance(float distance): pide un float y lo guarda en el atributo distance
 - setTravel(float travel): pide un float y lo guarda en el atributo travel
 - setDirection(char direction): pide un char y lo guarda en el atributo direction
+- setStatus(int status): pide un int y lo guarda en el atributo status
 
 Methods:
 - move(): mueve el disparo dependiendo su direccion
 - isDead(): comprueba si la distancia recorrida (travel) es igual o mayor a la
-distancia maxima(distance), retorna 1 si la condicion se cumple
+distancia maxima(distance), si se cumple la condicion cambia el estado de 0 a 1
 - remove(): si isDead() retorna 1 (verdadero) remueve el disparo del vector de disparos
 
 ### Player -> GenericEntity
