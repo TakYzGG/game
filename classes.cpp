@@ -162,9 +162,9 @@ Player::Player()
 
 // -- Getters --
 float Player::getCooldown(void) {return cooldown;}
-int Player::getShootSpeed(void) {return shootSpeed;}
+float Player::getShootSpeed(void) {return shootSpeed;}
 int Player::getShootRadio(void) {return shootRadio;}
-int Player::getShootDistance(void) {return shootDistance;}
+float Player::getShootDistance(void) {return shootDistance;}
 
 // -- Setters --
 // modificar el cooldown entre disparos
@@ -175,7 +175,7 @@ void Player::setCooldown(float cooldown) {
 }
 
 // modificar la velocidad de los disparos
-void Player::setShootSpeed(int speed) {
+void Player::setShootSpeed(float speed) {
     if (speed > 0) {
         this->shootSpeed = speed;
     }
@@ -189,7 +189,7 @@ void Player::setShootRadio(int radio) {
 }
 
 // modificar la distancia maxima de los disparos
-void Player::setShootDistance(int distance) {
+void Player::setShootDistance(float distance) {
     if (distance >= 50) {
         this->shootDistance = distance;
     }

@@ -66,9 +66,9 @@ class Player: public GenericEntity {
     private:
         // -- Atributes --
         float cooldown = 0.5f; // tiempo entre disparo y disparo
-        int shootSpeed = 1.0f; // velocidad del disparo
+        float shootSpeed = 1.0f; // velocidad del disparo
         int shootRadio = 5; // radio del disparo
-        int shootDistance = 100; // distancia maxima del disparo
+        float shootDistance = 100; // distancia maxima del disparo
 
     public:
         // -- Constructor --
@@ -76,15 +76,15 @@ class Player: public GenericEntity {
 
         // -- Getters --
         float getCooldown(void);
-        int getShootSpeed(void);
+        float getShootSpeed(void);
         int getShootRadio(void);
-        int getShootDistance(void);
+        float getShootDistance(void);
         
         // -- Setters --
         void setCooldown(float cooldown);
-        void setShootSpeed(int speed);
+        void setShootSpeed(float speed);
         void setShootRadio(int radio);
-        void setShootDistance(int distance);
+        void setShootDistance(float distance);
 
         // -- Methods --
         void move(void);
