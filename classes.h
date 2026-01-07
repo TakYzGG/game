@@ -102,6 +102,7 @@ class Enemy: public GenericEntity {
         Enemy(int x, int y);
 
         // -- Methods --
+        void move(Player& player);
         int isDead(void);
         void remove(void);
 };

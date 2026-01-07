@@ -299,6 +299,33 @@ Enemy::Enemy(int x, int y)
     {
     }
 
+// 
+void Enemy::move(Player &player) {
+    if (getPosX() <= player.getPosX()) {
+        float new_x = player.getPosX() - getPosX();
+        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+        setPosX(getPosX() + speed);
+    }
+
+    if (getPosX() >= player.getPosX()) {
+        float new_x = player.getPosX() - getPosX();
+        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+        setPosX(getPosX() - speed);
+    }
+
+    if (getPosY() <= player.getPosY()) {
+        float new_x = player.getPosY() - getPosY();
+        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+        setPosY(getPosY() + speed);
+    }
+
+    if (getPosY() >= player.getPosY()) {
+        float new_x = player.getPosY() - getPosY();
+        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+        setPosY(getPosY() - speed);
+    }
+}
+
 // comprobar si el disparo ya recorrio la distancia maxima
 int Enemy::isDead(void) {
   for (int i = 0; i < shoots.size(); i++)

@@ -48,6 +48,9 @@ int main(void) {
         wasFiring = firing;
 
         if (enemys.size() > 0) removeEnemys();
+    for (int i = 0; i < enemys.size(); i++) {
+        enemys[i]->move(player);
+    }
         if (shoots.size() > 0) travelShoots();
 
         // draw
