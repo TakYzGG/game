@@ -334,6 +334,7 @@ void Enemy::remove(void) {
 void travelShoots(void) {
     for (int i = 0; i < shoots.size(); i++) {
         shoots[i]->move();
+        shoots[i]->isDead();
         shoots[i]->remove();
     }
 }
