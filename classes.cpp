@@ -365,10 +365,3 @@ void travelShoots(void) {
         shoots[i]->remove();
     }
 }
-
-// -- Eliminar a los enemigos del vector --
-void removeEnemys(void) {
-    for (int i = 0; i < enemys.size(); i++) {
-        enemys[i]->remove();
-    }
-}

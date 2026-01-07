@@ -115,7 +115,4 @@ extern vector<Enemy*> enemys;
 // -- Recorrer el vector de Shoots --
 void travelShoots(void);
 
-// -- Eliminar a los enemigos --
-void removeEnemys();
-
 #endif
