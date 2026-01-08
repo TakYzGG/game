@@ -19,14 +19,8 @@ class Game {
         Game();
 
         // -- Getters --
-        float getTimer(void);
-        int getFiring(void);
-        int getWasFiring(void);
 
         // -- Setters --
-        void setTimer(float timer);
-        void setFiring(int firing);
-        void getWasFiring(int wasfiring);
 
         // -- Methods --
         void update(void);

@@ -13,9 +13,6 @@ Game::Game()
     {
     }
 
-// -- Getters --
-//Player Game::getPlayer(void) {return player;}
-
 // -- Methods --
 // actualizar datos del juego
 void Game::update(void) {
