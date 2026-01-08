@@ -6,13 +6,21 @@
 #include "classes.h"
 #include "interface.h"
 
+// -- Game Class --
+// -- Constructor
 Game::Game()
     : player(), interface(player)
-    {}
+    {
+    }
 
+// -- Getters --
+Player Game::getPlayer(void) {return player;}
+
+// -- Methods --
+// actualizar datos del juego
 void Game::update(void) {
         // update
-        timer += GetFrameTime();
+        //setTimer(getTimer() + GetFrameTime());
         player.move();
 
         firing = player.isFiring();

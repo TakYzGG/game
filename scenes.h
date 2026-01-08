@@ -19,6 +19,9 @@ class Game {
 
     public:
         Game();
+        // -- Getters --
+        Player getPlayer(void);
+
         // -- Methods --
         void update(void);
         void draw(void);
