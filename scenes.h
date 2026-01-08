@@ -27,4 +27,11 @@ class Game {
         void draw(void);
 };
 
+// -- Main menu Class --
+class MainMenu {
+    public:
+        int update(void);
+        void draw(void);
+};
+
 #endif

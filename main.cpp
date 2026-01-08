@@ -13,18 +13,24 @@ int main(void) {
     int screenWidth = 800;
     int screenHeight = 600;
     
-    GameScreen currentScreen = GAMEPLAY;
+    GameScreen currentScreen = TITLE;
 
     InitWindow(screenWidth, screenHeight, "Game");
 
     SetTargetFPS(60);
 
-    // crear al jugador
+    MainMenu menu;
     Game game;
 
     while (!WindowShouldClose()) {
         // update
         switch (currentScreen) {
+            case TITLE:
+                if (menu.update()) {
+                    currentScreen = GAMEPLAY;
+                }
+                break;
+
             case GAMEPLAY:
                 game.update();
                 break;
@@ -33,6 +39,10 @@ int main(void) {
         // draw
         BeginDrawing();
         switch (currentScreen) {
+            case TITLE:
+                menu.draw();
+                break;
+
             case GAMEPLAY:
                 game.draw();
                 break;
