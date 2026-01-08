@@ -7,20 +7,26 @@
 #include "classes.h"
 #include "interface.h"
 
+// Game Class
 class Game {
     private:
         // -- Atributes --
         Player player;
         Interface interface;
-        float timer = 0.0f;
-
-        int firing = 0;
-        int wasFiring = 0;
 
     public:
+        // -- Constructor --
         Game();
+
         // -- Getters --
-        Player getPlayer(void);
+        float getTimer(void);
+        int getFiring(void);
+        int getWasFiring(void);
+
+        // -- Setters --
+        void setTimer(float timer);
+        void setFiring(int firing);
+        void getWasFiring(int wasfiring);
 
         // -- Methods --
         void update(void);

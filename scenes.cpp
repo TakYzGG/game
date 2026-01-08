@@ -7,7 +7,7 @@
 #include "interface.h"
 
 // -- Game Class --
-// -- Constructor
+// -- Constructor --
 Game::Game()
     : player(), interface(player)
     {
@@ -19,36 +19,37 @@ Player Game::getPlayer(void) {return player;}
 // -- Methods --
 // actualizar datos del juego
 void Game::update(void) {
-        // update
-        //setTimer(getTimer() + GetFrameTime());
-        player.move();
+    // update
+    setTimer(getTimer() + GetFrameTime());
+    player.move();
 
-        firing = player.isFiring();
+    firing = player.isFiring();
 
-        if (firing && !wasFiring) {
-            player.shoot();
-            timer = 0.0f;
-        }
+    if (firing && !wasFiring) {
+        player.shoot();
+        timer = 0.0f;
+    }
 
-        else if (firing && (timer >= player.getCooldown())) {
-            player.shoot();
-            timer = 0.0f;
-        }
+    else if (firing && (timer >= player.getCooldown())) {
+        player.shoot();
+        timer = 0.0f;
+    }
 
-        wasFiring = firing;
+    wasFiring = firing;
 
     for (int i = 0; i < enemys.size(); i++) {
         enemys[i]->move(player);
         enemys[i]->remove();
     }
-        if (shoots.size() > 0) travelShoots();
+
+    if (shoots.size() > 0) travelShoots();
 }
 
 void Game::draw(void) {
-            ClearBackground(WHITE);
-            interface.drawHudDebbug();
-            interface.drawHud();
-            interface.drawShoots();
-            interface.drawPlayer();
-            interface.drawEnemys();
+    ClearBackground(WHITE);
+    interface.drawHudDebbug();
+    interface.drawHud();
+    interface.drawShoots();
+    interface.drawPlayer();
+    interface.drawEnemys();
 }
