@@ -68,10 +68,10 @@ class Shoot: public GenericEntity {
 class Player: public GenericEntity {
     private:
         // -- Atributes --
-        float cooldown = 0.5f; // tiempo entre disparo y disparo
-        float shootSpeed = 1.0f; // velocidad del disparo
-        int shootRadio = 5; // radio del disparo
-        float shootDistance = 100; // distancia maxima del disparo
+        float cooldown; // tiempo entre disparo y disparo
+        float shootSpeed; // velocidad del disparo
+        int shootRadio; // radio del disparo
+        float shootDistance; // distancia maxima del disparo
         float timer;
         int firing;
         int wasFiring;

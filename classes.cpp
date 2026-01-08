@@ -29,22 +29,30 @@ int GenericEntity::getRadio(void) {return radio;}
 // -- Setters --
 // modificar posicion x
 void GenericEntity::setPosX(float x) {
-    this->x = x;
+    if ((x >= 0.0f) && (x <= GetScreenWidth())) {
+        this->x = x;
+    }
 }
 
 // modificar posicion y
 void GenericEntity::setPosY(float y) {
-    this->y = y;
+    if ((y >= 0.0f) && (y <= GetScreenHeight())) {
+        this->y = y;
+    }
 }
 
 // modificar velocidad
 void GenericEntity::setSpeed(float speed) {
-    this->speed = speed;
+    if ((speed >= 0.5f) && (speed <= 5.0f)) { // talvez 5 es mucho pero XD
+        this->speed = speed;
+    }
 }
 
 // modificar radio
 void GenericEntity::setRadio(int radio) {
-    this->radio = radio;
+    if ((radio >= 5) && (radio <= 10)) {
+        this->radio = radio;
+    }
 }
 
 // -- Shoot Class --
@@ -66,12 +74,16 @@ int Shoot::getStatus(void) {return status;}
 // -- Setters --
 // modificar la distancia maxima que puede recorrer el disparo
 void Shoot::setDistance(float distance) {
-    this->distance = distance;
+    if ((distance >= 50) && (distance <= 350)) {
+        this->distance = distance;
+    }
 }
 
 // modificar la distancia recorrida por el disparo
 void Shoot::setTravel(float travel) {
-    this->travel = travel;
+    if (travel >= 0) {
+        this->travel = travel;
+    }
 }
 
 // direcciones validas para los disparos
@@ -90,7 +102,9 @@ void Shoot::setDirection(char direction) {
 
 // cambiar el estado del disparo
 void Shoot::setStatus(int status) {
-    this->status = status;
+    if ((status == 1) || (status == 0)) {
+        this->status = status;
+    }
 }
 
 // -- Methods --
@@ -162,6 +176,10 @@ void Shoot::remove(void) {
 Player::Player()
     :GenericEntity((GetScreenWidth() / 2), (GetScreenHeight() / 2), 1, 8)
     {
+        setCooldown(0.5f);
+        setShootSpeed(1.0f);
+        setShootRadio(5);
+        setShootDistance(100);
         setTimer(0.0f);
         setFiring(0);
         setWasFiring(0);
@@ -179,34 +197,34 @@ int Player::getWasFiring(void) {return wasFiring;}
 // -- Setters --
 // modificar el cooldown entre disparos
 void Player::setCooldown(float cooldown) {
-    if (cooldown >= 0.1) {
+    if ((cooldown >= 0.1f) && (cooldown <= 1.0f)) {
         this->cooldown = cooldown;
     }
 }
 
 // modificar la velocidad de los disparos
 void Player::setShootSpeed(float speed) {
-    if (speed > 0) {
+    if ((speed >= 0.5f) && (speed <= 2.0f)) {
         this->shootSpeed = speed;
     }
 }
 
 // modificar el radio de los disparos
 void Player::setShootRadio(int radio) {
-    if (radio >= 5) {
+    if ((radio >= 5) && (radio <= 10)) {
         this->shootRadio = radio;
     }
 }
 
 // modificar la distancia maxima de los disparos
 void Player::setShootDistance(float distance) {
-    if (distance >= 50) {
+    if ((distance >= 50.0f) && (distance <= 350.0f)) {
         this->shootDistance = distance;
     }
 }
 
 void Player::setTimer(float timer) {
-    if (timer <= 1.0f) {
+    if (timer >= 0.0f) {
         this->timer = timer;
     } 
 }
@@ -228,22 +246,22 @@ void Player::setWasFiring(int wasFiring) {
 void Player::move(void) {
     float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
     // arriba
-    if (IsKeyDown(KEY_W) && (getPosY() > 0)) {
+    if (IsKeyDown(KEY_W)) {
         setPosY(getPosY() - speed);
     }
 
     // izquierda
-    if (IsKeyDown(KEY_A) && (getPosX() > 0)) {
+    if (IsKeyDown(KEY_A)) {
         setPosX(getPosX() - speed);
     }
 
     // abajo
-    if (IsKeyDown(KEY_S) && (getPosY() < GetScreenHeight())) {
+    if (IsKeyDown(KEY_S)) {
         setPosY(getPosY() + speed);
     }
 
     // derecha
-    if (IsKeyDown(KEY_D) && (getPosX() < GetScreenWidth())) {
+    if (IsKeyDown(KEY_D)) {
         setPosX(getPosX() + speed);
     }
 }
