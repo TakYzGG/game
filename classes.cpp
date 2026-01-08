@@ -162,6 +162,9 @@ void Shoot::remove(void) {
 Player::Player()
     :GenericEntity((GetScreenWidth() / 2), (GetScreenHeight() / 2), 1, 8)
     {
+        setTimer(0.0f);
+        setFiring(0);
+        setWasFiring(0);
     }
 
 // -- Getters --
@@ -169,6 +172,9 @@ float Player::getCooldown(void) {return cooldown;}
 float Player::getShootSpeed(void) {return shootSpeed;}
 int Player::getShootRadio(void) {return shootRadio;}
 float Player::getShootDistance(void) {return shootDistance;}
+float Player::getTimer(void) {return timer;}
+int Player::getFiring(void) {return firing;}
+int Player::getWasFiring(void) {return wasFiring;}
 
 // -- Setters --
 // modificar el cooldown entre disparos
@@ -196,6 +202,24 @@ void Player::setShootRadio(int radio) {
 void Player::setShootDistance(float distance) {
     if (distance >= 50) {
         this->shootDistance = distance;
+    }
+}
+
+void Player::setTimer(float timer) {
+    if (timer <= 1.0f) {
+        this->timer = timer;
+    } 
+}
+
+void Player::setFiring(int firing) {
+    if ((firing == 1) || (firing == 0)) {
+        this->firing = firing;
+    }
+}
+
+void Player::setWasFiring(int wasFiring) {
+    if ((wasFiring == 1) || (wasFiring == 0)) {
+        this->wasFiring = wasFiring;
     }
 }
 

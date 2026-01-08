@@ -14,28 +14,28 @@ Game::Game()
     }
 
 // -- Getters --
-Player Game::getPlayer(void) {return player;}
+//Player Game::getPlayer(void) {return player;}
 
 // -- Methods --
 // actualizar datos del juego
 void Game::update(void) {
     // update
-    setTimer(getTimer() + GetFrameTime());
+    player.setTimer(player.getTimer() + GetFrameTime());
     player.move();
 
-    firing = player.isFiring();
+    player.setFiring(player.isFiring());
 
-    if (firing && !wasFiring) {
+    if (player.getFiring() && !player.getWasFiring()) {
         player.shoot();
-        timer = 0.0f;
+        player.setTimer(0.0f);
     }
 
-    else if (firing && (timer >= player.getCooldown())) {
+    else if (player.getFiring() && (player.getTimer() >= player.getCooldown())) {
         player.shoot();
-        timer = 0.0f;
+        player.setTimer(0.0f);
     }
 
-    wasFiring = firing;
+    player.setWasFiring(player.getFiring());
 
     for (int i = 0; i < enemys.size(); i++) {
         enemys[i]->move(player);
