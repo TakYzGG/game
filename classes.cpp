@@ -2,6 +2,7 @@
 
 // -- Librerias --
 #include "classes.h"
+#include "functions.h"
 #include <bits/stdc++.h>
 #include <raylib.h>
 #include <vector>
@@ -110,7 +111,7 @@ void Shoot::setStatus(int status) {
 // -- Methods --
 // movimiento de los disparos
 void Shoot::move(void) {
-    float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+    float speed = calcSpeed(getSpeed());
 
     switch (getDirection()) {
         // arriba
@@ -244,7 +245,7 @@ void Player::setWasFiring(int wasFiring) {
 // -- Methods --
 // movimiento del jugador
 void Player::move(void) {
-    float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
+    float speed = calcSpeed(getSpeed());
     // arriba
     if (IsKeyDown(KEY_W)) {
         setPosY(getPosY() - speed);
@@ -343,27 +344,24 @@ Enemy::Enemy(int x, int y)
 
 // mover al enemigo a la posicion del jugador
 void Enemy::move(Player &player) {
+    float speed = calcSpeed(getSpeed());
     if (getPosX() <= player.getPosX()) {
         float new_x = player.getPosX() - getPosX();
-        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
         setPosX(getPosX() + speed);
     }
 
     if (getPosX() >= player.getPosX()) {
         float new_x = player.getPosX() - getPosX();
-        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
         setPosX(getPosX() - speed);
     }
 
     if (getPosY() <= player.getPosY()) {
         float new_x = player.getPosY() - getPosY();
-        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
         setPosY(getPosY() + speed);
     }
 
     if (getPosY() >= player.getPosY()) {
         float new_x = player.getPosY() - getPosY();
-        float speed = GetFrameTime() * 6.0f * (getSpeed() * 10.0f);
         setPosY(getPosY() - speed);
     }
 }
