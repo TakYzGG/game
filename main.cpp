@@ -4,12 +4,15 @@
 #include <iostream>
 #include <raylib.h>
 #include "scenes.h"
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
 
 // -- Funcion principal --
 int main(void) {
+    srand(time(NULL));
     int screenWidth = 800;
     int screenHeight = 600;
     

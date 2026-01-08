@@ -18,6 +18,7 @@ Interface::Interface(Player& player)
 // -- Methods --
 // dibujar el hud debbug 
 void Interface::drawHudDebbug(void) {
+    DrawText(TextFormat("Count Enemis: %d", enemys.size()), 10, 480, 20, BLACK);
     DrawText(TextFormat("Player move: %f", GetFrameTime() * 6.0f * (player.getSpeed() * 10.0f) ), 10, 500, 20, BLACK);
     DrawText(TextFormat("Player X: %f", player.getPosX()), 10, 520, 20, BLACK);
     DrawText(TextFormat("Player Y: %f", player.getPosY()), 10, 540, 20, BLACK);

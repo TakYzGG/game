@@ -123,5 +123,6 @@ extern vector<Enemy*> enemys;
 // -- Funciones
 // -- Recorrer el vector de Shoots --
 void travelShoots(void);
+void generateEnemys(int round);
 
 #endif

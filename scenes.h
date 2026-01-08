@@ -13,6 +13,7 @@ class Game {
         // -- Atributes --
         Player player;
         Interface interface;
+        int round = 0;
 
     public:
         // -- Constructor --

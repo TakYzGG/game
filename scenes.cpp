@@ -17,6 +17,12 @@ Game::Game()
 // actualizar datos del juego
 void Game::update(void) {
     // -- Update --
+
+    if (enemys.size() == 0) {
+        round += 1;
+        generateEnemys(round);
+    }
+
     // modificar el timer del jugador
     player.setTimer(player.getTimer() + GetFrameTime());
 

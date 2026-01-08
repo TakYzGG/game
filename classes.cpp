@@ -6,6 +6,7 @@
 #include <bits/stdc++.h>
 #include <raylib.h>
 #include <vector>
+#include <stdlib.h>
 using namespace std;
 
 // -- Variables --
@@ -403,5 +404,15 @@ void travelShoots(void) {
         shoots[i]->move();
         shoots[i]->isDead();
         shoots[i]->remove();
+    }
+}
+
+// -- Generar a los enemigos --
+void generateEnemys(int round) {
+    int n = (rand() % round) + (rand() % 3) + 3;
+    for (int i = 0; i < n; i++) {
+        int x = rand() % GetScreenWidth();
+        int y = rand() % GetScreenHeight();
+        enemys.push_back(new Enemy(x, y));
     }
 }
