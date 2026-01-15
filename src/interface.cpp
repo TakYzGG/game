@@ -3,17 +3,14 @@
 // -- Librerias --
 #include <raylib.h>
 #include <iostream>
-#include "classes.h"
+#include "shoot.h"
+#include "player.h"
 #include "interface.h"
+#include "enemy.h"
 
 using namespace std;
 
 // -- Clase de la interfaz --
-// -- Constructor --
-Interface::Interface(Player& player)
-    : player(player)
-    {
-    }
 
 // -- Methods --
 // dibujar el hud debbug 

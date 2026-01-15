@@ -3,13 +3,15 @@
 // -- Librerias --
 #include <raylib.h>
 #include "scenes.h"
-#include "classes.h"
+#include "shoot.h"
+#include "player.h"
 #include "interface.h"
+#include "enemy.h"
 
 // -- Game Class --
 // -- Constructor --
 Game::Game()
-    : player(), interface(player)
+    :interface()
     {
     }
 
@@ -49,7 +51,7 @@ void Game::update(void) {
 
     // actualizar enemigos
     for (int i = 0; i < enemys.size(); i++) {
-        enemys[i]->move(player);
+        enemys[i]->move();
         enemys[i]->remove();
     }
 

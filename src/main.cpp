@@ -6,6 +6,7 @@
 #include "scenes.h"
 #include <stdlib.h>
 #include <time.h>
+#include "player.h"
 using namespace std;
 
 typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
@@ -24,6 +25,7 @@ int main(void) {
 
     MainMenu menu;
     Game game;
+    player.setPosition();
 
     while (!WindowShouldClose()) {
         // update
