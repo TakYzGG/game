@@ -21,6 +21,7 @@ Game::Game()
 void Game::update(void) {
     // -- Update --
 
+    // si no hay mas enemigos los genera nuevamente
     if (enemys.size() == 0) {
         round += 1;
         generateEnemys(round);

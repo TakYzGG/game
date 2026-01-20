@@ -76,7 +76,6 @@ void Enemy::remove(void) {
     }
 }
 
-
 // -- Generar a los enemigos --
 void generateEnemys(int round) {
     int n = (rand() % round) + (rand() % 3) + 3;

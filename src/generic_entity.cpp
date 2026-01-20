@@ -1,5 +1,9 @@
-#include "generic_entity.h"
+// -- Clase para generar entidades genericas --
+
+// -- Librerias --
 #include <raylib.h>
+
+#include "generic_entity.h"
 
 // -- Generic Class --
 // -- Constructor --

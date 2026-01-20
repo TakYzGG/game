@@ -1,6 +1,9 @@
+// -- Clase del jugador --
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
+// -- Libreiras --
 #include "generic_entity.h"
 
 // -- Player Class --

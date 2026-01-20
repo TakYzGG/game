@@ -1,8 +1,9 @@
-// -- Classes --
+// -- Clase del disparo --
 
 #ifndef SHOOT_H
 #define SHOOT_H
 
+// -- Librerias --
 #include <vector>
 #include "generic_entity.h"
 using namespace std;

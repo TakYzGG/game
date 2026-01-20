@@ -2,15 +2,13 @@
 
 // -- Librerias --
 #include <raylib.h>
-#include <iostream>
+
 #include "shoot.h"
 #include "player.h"
 #include "interface.h"
 #include "enemy.h"
 
 using namespace std;
-
-// -- Clase de la interfaz --
 
 // -- Methods --
 // dibujar el hud debbug 
@@ -39,6 +37,7 @@ void Interface::drawPlayer(void) {
     DrawCircle(player.getPosX(), player.getPosY(), player.getRadio(), RED);
 }
 
+// dibujar a los enemigos
 void Interface::drawEnemys(void) {
     for (int i = 0; i < enemys.size(); i++) {
         DrawCircle(enemys[i]->getPosX(), enemys[i]->getPosY(), enemys[i]->getRadio(), GREEN);

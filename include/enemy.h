@@ -1,7 +1,9 @@
+// -- Clase del enemigo del juego --
+
 #ifndef ENEMY_H
 #define ENEMY_H
 
-
+// -- Librerias --
 #include <vector>
 
 #include "generic_entity.h"

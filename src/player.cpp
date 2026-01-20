@@ -1,8 +1,12 @@
+// -- Clase del jugador --
+
+// -- Librerias --
+#include <raylib.h>
+
 #include "player.h"
 #include "generic_entity.h"
 #include "shoot.h"
 #include "functions.h"
-#include <raylib.h>
 
 Player player;
 

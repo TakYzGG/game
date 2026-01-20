@@ -1,8 +1,9 @@
 // -- Menu principal del juego --
 
 // -- Librerias --
-#include "main_menu.h"
 #include <raylib.h>
+
+#include "main_menu.h"
 
 // -- Main menu Class --
 // comprobar si se preciono entre

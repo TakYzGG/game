@@ -1,12 +1,12 @@
-// -- Jugeo
+// -- Archivo principal del programa --
 
 // -- Librerias --
-#include <iostream>
 #include <raylib.h>
-#include "main_menu.h"
-#include "game.h"
 #include <stdlib.h>
 #include <time.h>
+
+#include "main_menu.h"
+#include "game.h"
 #include "player.h"
 using namespace std;
 
@@ -18,16 +18,21 @@ int main(void) {
     int screenWidth = 800;
     int screenHeight = 600;
     
+    // primera escena del juego
     GameScreen currentScreen = TITLE;
 
+    // crear la ventana
     InitWindow(screenWidth, screenHeight, "Game");
 
+    // settear los fps
     SetTargetFPS(60);
 
+    // crear objetos de clase
     MainMenu menu;
     Game game;
     player.setPosition();
 
+    // bucle principal
     while (!WindowShouldClose()) {
         // update
         switch (currentScreen) {
@@ -56,6 +61,7 @@ int main(void) {
         EndDrawing();
     }
 
+    // cerrar la ventana
     CloseWindow();
 
     return 0;

@@ -1,4 +1,4 @@
-// -- Clase Gener
+// -- Clase para generar entidades genericas --
 
 #ifndef GENERIC_ENTITY_H
 #define GENERIC_ENTITY_H

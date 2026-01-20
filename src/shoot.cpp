@@ -1,12 +1,12 @@
-// -- Clases --
+// -- Clase del disparo --
 
 // -- Librerias --
+#include <bits/stdc++.h>
+#include <vector>
+
+#include "generic_entity.h"
 #include "shoot.h"
 #include "functions.h"
-#include <bits/stdc++.h>
-//#include <raylib.h>
-#include <vector>
-#include "generic_entity.h"
 using namespace std;
 
 // -- Variables --
