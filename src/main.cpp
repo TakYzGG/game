@@ -3,7 +3,8 @@
 // -- Librerias --
 #include <iostream>
 #include <raylib.h>
-#include "scenes.h"
+#include "main_menu.h"
+#include "game.h"
 #include <stdlib.h>
 #include <time.h>
 #include "player.h"

@@ -1,9 +1,9 @@
-// -- Escenas del juego --
+// -- Clase encargada de ejecutar el bucle del juego --
 
-#ifndef SCENES_H
-#define SCENES_H
+#ifndef GAME_H
+#define GAME_H
 
-// -- Librerias -
+// -- Librerias --
 #include "interface.h"
 
 // Game Class
@@ -19,13 +19,6 @@ class Game {
 
         // -- Methods --
         void update(void);
-        void draw(void);
-};
-
-// -- Main menu Class --
-class MainMenu {
-    public:
-        int update(void);
         void draw(void);
 };
 
