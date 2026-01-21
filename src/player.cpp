@@ -24,6 +24,7 @@ Player::Player()
         setTimer(0.0f);
         setFiring(0);
         setWasFiring(0);
+        setPoints(0);
     }
 
 // -- Private Methods --
@@ -109,6 +110,7 @@ float Player::getShootDistance(void) {return shootDistance;}
 float Player::getTimer(void) {return timer;}
 int Player::getFiring(void) {return firing;}
 int Player::getWasFiring(void) {return wasFiring;}
+int Player::getPoints(void) {return points;}
 
 // -- Setters --
 void Player::setPosition(void) {
@@ -172,6 +174,10 @@ void Player::setWasFiring(int wasFiring) {
     if ((wasFiring == 1) || (wasFiring == 0)) {
         this->wasFiring = wasFiring;
     }
+}
+
+void Player::setPoints(int points) {
+    this->points = points;
 }
 
 // -- Methods --
@@ -273,12 +279,12 @@ void Player::upgrate(void) {
 
     // todos los casos posibles
     switch (num) {
-        case 0: upgrateSpeed(); break;
-        case 1: upgrateRadio(); break;
-        case 2: upgrateCooldown(); break;
-        case 3: upgrateShootSpeed(); break;
-        case 4: upgrateShootRadio(); break;
-        case 5: upgrateShootDistance(); break;
+        case 0: upgrateSpeed(); cout << "up velocidad" << endl; break;
+        case 1: upgrateRadio(); cout << "up radio" << endl; break;
+        case 2: upgrateCooldown(); cout << "up cooldown" << endl; break;
+        case 3: upgrateShootSpeed(); cout << "up shoot speed" << endl; break;
+        case 4: upgrateShootRadio(); cout << "up shoot radio" << endl; break;
+        case 5: upgrateShootDistance(); cout << "up shoot distance" << endl; break;
     }
 }
 
@@ -288,11 +294,11 @@ void Player::downgrate(void) {
 
     // todos los casos posibles
     switch (num) {
-        case 0: downgrateSpeed(); cout << "Velocidad" << endl; break;
-        case 1: downgrateRadio(); cout << "Radio" << endl;break;
-        case 2: downgrateCooldown();cout << "Cooldown" << endl; break;
-        case 3: downgrateShootSpeed(); cout << "Velocidad disparo" << endl;break;
-        case 4: downgrateShootRadio(); cout << "radio disparo" << endl;break;
-        case 5: downgrateShootDistance(); cout << "distance disparo" << endl;break;
+        case 0: downgrateSpeed(); cout << "down Velocidad" << endl; break;
+        case 1: downgrateRadio(); cout << "down Radio" << endl;break;
+        case 2: downgrateCooldown();cout << "down Cooldown" << endl; break;
+        case 3: downgrateShootSpeed(); cout << "down Velocidad disparo" << endl;break;
+        case 4: downgrateShootRadio(); cout << "down radio disparo" << endl;break;
+        case 5: downgrateShootDistance(); cout << "down distance disparo" << endl;break;
     }
 }

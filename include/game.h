@@ -18,7 +18,7 @@ class Game {
         Game();
 
         // -- Methods --
-        void update(void);
+        int update(void);
         void draw(void);
 };
 

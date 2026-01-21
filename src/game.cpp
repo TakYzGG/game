@@ -18,13 +18,18 @@ Game::Game()
 
 // -- Methods --
 // actualizar datos del juego
-void Game::update(void) {
+int Game::update(void) {
     // -- Update --
 
     // si no hay mas enemigos los genera nuevamente
     if (enemys.size() == 0) {
         round += 1;
+        player.setPoints(player.getPoints() + 1);
         generateEnemys(round);
+
+        if (round % 3 == 0) {
+            return 1;
+        }
     }
 
     // modificar el timer del jugador
@@ -59,6 +64,9 @@ void Game::update(void) {
 
     // actualizar disparos
     if (shoots.size() > 0) travelShoots();
+
+    return 0;
+
 }
 
 // actualizar GUI

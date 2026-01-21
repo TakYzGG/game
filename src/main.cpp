@@ -7,10 +7,11 @@
 
 #include "main_menu.h"
 #include "game.h"
+#include "upgrate.h"
 #include "player.h"
 using namespace std;
 
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, UPGRATE, ENDING } GameScreen;
 
 // -- Funcion principal --
 int main(void) {
@@ -30,6 +31,8 @@ int main(void) {
     // crear objetos de clase
     MainMenu menu;
     Game game;
+    Upgrate upgrate;
+
     player.setPosition();
 
     // bucle principal
@@ -43,7 +46,15 @@ int main(void) {
                 break;
 
             case GAMEPLAY:
-                game.update();
+                if (game.update()) {
+                    currentScreen = UPGRATE;
+                }
+                break;
+
+            case UPGRATE:
+                if (upgrate.update()) {
+                    currentScreen = GAMEPLAY;
+                }
                 break;
         }
 
@@ -56,6 +67,10 @@ int main(void) {
 
             case GAMEPLAY:
                 game.draw();
+                break;
+
+            case UPGRATE:
+                upgrate.draw();
                 break;
         }
         EndDrawing();

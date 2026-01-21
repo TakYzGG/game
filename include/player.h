@@ -17,6 +17,7 @@ class Player: public GenericEntity {
         float timer;
         int firing;
         int wasFiring;
+        int points;
 
         // -- Private Methods --
         int upgrateIntAtribute(int max);
@@ -48,6 +49,7 @@ class Player: public GenericEntity {
         float getTimer(void);
         int getFiring(void);
         int getWasFiring(void);
+        int getPoints(void);
         
         // -- Setters --
         void setPosition(void);
@@ -58,6 +60,7 @@ class Player: public GenericEntity {
         void setTimer(float timer);
         void setFiring(int firing);
         void setWasFiring(int wasFiring);
+        void setPoints(int points);
 
         // -- Methods --
         void move(void);
