@@ -3,6 +3,7 @@
 // -- Librerias --
 #include <raylib.h>
 #include <stdlib.h>
+#include <iostream>
 
 #include "player.h"
 #include "generic_entity.h"
@@ -62,7 +63,7 @@ void Player::upgrateCooldown(void) {
 }
 
 void Player::upgrateShootSpeed(void) {
-    setShootSpeed(getShootSpeed() - upgrateFloatAtribute(4));
+    setShootSpeed(getShootSpeed() + upgrateFloatAtribute(4));
 }
 
 void Player::upgrateShootRadio(void) {
@@ -88,7 +89,7 @@ void Player::downgrateCooldown(void) {
 }
 
 void Player::downgrateShootSpeed(void) {
-    setShootSpeed(getShootSpeed() + upgrateFloatAtribute(4));
+    setShootSpeed(getShootSpeed() - upgrateFloatAtribute(4));
 }
 
 void Player::downgrateShootRadio(void) {
@@ -97,7 +98,7 @@ void Player::downgrateShootRadio(void) {
 
 void Player::downgrateShootDistance(void) {
     // el valor minimo de esto es 50 (49 de la suma y 1 del minimo de la func)
-    setShootDistance(getShootDistance() - (upgrateIntAtribute(100) + 49));
+    setShootDistance(getShootDistance() - (upgrateIntAtribute(100)));
 }
 
 // -- Getters --
@@ -119,6 +120,12 @@ void Player::setPosition(void) {
 void Player::setCooldown(float cooldown) {
     if ((cooldown >= 0.1f) && (cooldown <= 1.0f)) {
         this->cooldown = cooldown;
+        return;
+    }
+
+    if (cooldown > 1.0f) {
+        this->cooldown = 1.0f;
+        return;
     }
 }
 
@@ -140,6 +147,12 @@ void Player::setShootRadio(int radio) {
 void Player::setShootDistance(float distance) {
     if ((distance >= 50.0f) && (distance <= 350.0f)) {
         this->shootDistance = distance;
+        return;
+    }
+
+    if (distance < 50.0f) {
+        this->shootDistance = 50;
+        return;
     }
 }
 
@@ -275,11 +288,11 @@ void Player::downgrate(void) {
 
     // todos los casos posibles
     switch (num) {
-        case 0: downgrateSpeed(); break;
-        case 1: downgrateRadio(); break;
-        case 2: downgrateCooldown(); break;
-        case 3: downgrateShootSpeed(); break;
-        case 4: downgrateShootRadio(); break;
-        case 5: downgrateShootDistance(); break;
+        case 0: downgrateSpeed(); cout << "Velocidad" << endl; break;
+        case 1: downgrateRadio(); cout << "Radio" << endl;break;
+        case 2: downgrateCooldown();cout << "Cooldown" << endl; break;
+        case 3: downgrateShootSpeed(); cout << "Velocidad disparo" << endl;break;
+        case 4: downgrateShootRadio(); cout << "radio disparo" << endl;break;
+        case 5: downgrateShootDistance(); cout << "distance disparo" << endl;break;
     }
 }

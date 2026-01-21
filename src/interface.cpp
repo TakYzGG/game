@@ -24,7 +24,8 @@ void Interface::drawHudDebbug(void) {
 // dibujar la hud del juego
 void Interface::drawHud(void) {
     DrawText(TextFormat("Speed: %f", player.getSpeed()), 10, 10, 20, BLACK);
-    DrawText(TextFormat("Radio: %f", player.getRadio()), 10, 30, 20, BLACK);
+    DrawText(TextFormat("Radio: %d", player.getRadio()), 10, 30, 20, BLACK);
+    DrawText(TextFormat("Cooldown: %f", player.getCooldown()), 10, 110, 20, BLACK);
     DrawText(TextFormat("Shoot distance: %f", player.getShootDistance()), 10, 50, 20, BLACK);
     DrawText(TextFormat("Shoot speed: %f", player.getShootSpeed()), 10, 70, 20, BLACK);
     DrawText(TextFormat("Shoot radio: %d", player.getShootRadio()), 10, 90, 20, BLACK);

@@ -46,5 +46,11 @@ void GenericEntity::setSpeed(float speed) {
 void GenericEntity::setRadio(int radio) {
     if ((radio >= 5) && (radio <= 10)) {
         this->radio = radio;
+        return;
+    }
+
+    if (radio > 10) {
+        this->radio = 10;
+        return;
     }
 }
