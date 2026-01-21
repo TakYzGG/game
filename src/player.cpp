@@ -129,12 +129,28 @@ void Player::setCooldown(float cooldown) {
         this->cooldown = 1.0f;
         return;
     }
+
+    if (cooldown < 0.1f) {
+        this->cooldown = 0.1f;
+        return;
+    }
 }
 
 // modificar la velocidad de los disparos
 void Player::setShootSpeed(float speed) {
     if ((speed >= 0.5f) && (speed <= 2.0f)) {
         this->shootSpeed = speed;
+        return;
+    }
+
+    if (speed > 2.0f) {
+        this->shootSpeed = 2.0f;
+        return;
+    }
+
+    if (speed < 0.5f) {
+        this->shootSpeed = 0.5f;
+        return;
     }
 }
 
@@ -142,6 +158,17 @@ void Player::setShootSpeed(float speed) {
 void Player::setShootRadio(int radio) {
     if ((radio >= 5) && (radio <= 10)) {
         this->shootRadio = radio;
+        return;
+    }
+
+    if (radio > 10) {
+        this->shootRadio = 10;
+        return;
+    }
+
+    if (radio < 5) {
+        this->shootRadio = 5;
+        return;
     }
 }
 
@@ -154,6 +181,11 @@ void Player::setShootDistance(float distance) {
 
     if (distance < 50.0f) {
         this->shootDistance = 50;
+        return;
+    }
+
+    if (distance > 350.0f) {
+        this->shootDistance = 350;
         return;
     }
 }

@@ -53,4 +53,9 @@ void GenericEntity::setRadio(int radio) {
         this->radio = 10;
         return;
     }
+
+    if (radio < 5) {
+        this->radio = 5;
+        return;
+    }
 }
