@@ -18,6 +18,24 @@ class Player: public GenericEntity {
         int firing;
         int wasFiring;
 
+        // -- Private Methods --
+        int upgrateIntAtribute(int max);
+        float upgrateFloatAtribute(int max); // max = 5 | upgrate_max = 0.50
+
+        void upgrateSpeed(void);
+        void upgrateRadio(void);
+        void upgrateCooldown(void);
+        void upgrateShootSpeed(void);
+        void upgrateShootRadio(void);
+        void upgrateShootDistance(void);
+
+        void downgrateSpeed(void);
+        void downgrateRadio(void);
+        void downgrateCooldown(void);
+        void downgrateShootSpeed(void);
+        void downgrateShootRadio(void);
+        void downgrateShootDistance(void);
+
     public:
         // -- Constructor --
         Player();
@@ -45,6 +63,8 @@ class Player: public GenericEntity {
         void move(void);
         int isFiring(void);
         void shoot(void);
+        void upgrate(void);
+        void downgrate(void);
 };
 
 extern Player player;

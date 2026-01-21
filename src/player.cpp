@@ -2,6 +2,7 @@
 
 // -- Librerias --
 #include <raylib.h>
+#include <stdlib.h>
 
 #include "player.h"
 #include "generic_entity.h"
@@ -23,6 +24,81 @@ Player::Player()
         setFiring(0);
         setWasFiring(0);
     }
+
+// -- Private Methods --
+int Player::upgrateIntAtribute(int max) {
+    int upgrate = 0;
+    int n = rand() % max;
+
+    for (int i = 0; i <= n; i++) {
+        upgrate++;
+    }
+
+    return upgrate;
+}
+
+float Player::upgrateFloatAtribute(int max) {
+    float upgrate = 0.0f;
+    int n = rand() % max; // maximo 0.50
+
+    for (int i = 0; i <= n; i++) {
+        upgrate += 0.10f;
+    }
+
+    return upgrate;
+}
+
+// mejoras
+void Player::upgrateSpeed(void) {
+    setSpeed(getSpeed() + upgrateFloatAtribute(5));
+}
+
+void Player::upgrateRadio(void) {
+    setRadio(getRadio() - upgrateIntAtribute(3));
+}
+
+void Player::upgrateCooldown(void) {
+    setCooldown(getCooldown() - upgrateFloatAtribute(3));
+}
+
+void Player::upgrateShootSpeed(void) {
+    setShootSpeed(getShootSpeed() - upgrateFloatAtribute(4));
+}
+
+void Player::upgrateShootRadio(void) {
+    setShootRadio(getShootRadio() + upgrateIntAtribute(3));
+}
+
+void Player::upgrateShootDistance(void) {
+    // el valor minimo de esto es 50 (49 de la suma y 1 del minimo de la func)
+    setShootDistance(getShootDistance() + (upgrateIntAtribute(100) + 49));
+}
+
+// downgrate
+void Player::downgrateSpeed(void) {
+    setSpeed(getSpeed() - upgrateFloatAtribute(5));
+}
+
+void Player::downgrateRadio(void) {
+    setRadio(getRadio() + upgrateIntAtribute(3));
+}
+
+void Player::downgrateCooldown(void) {
+    setCooldown(getCooldown() + upgrateFloatAtribute(3));
+}
+
+void Player::downgrateShootSpeed(void) {
+    setShootSpeed(getShootSpeed() + upgrateFloatAtribute(4));
+}
+
+void Player::downgrateShootRadio(void) {
+    setShootRadio(getShootRadio() - upgrateIntAtribute(3));
+}
+
+void Player::downgrateShootDistance(void) {
+    // el valor minimo de esto es 50 (49 de la suma y 1 del minimo de la func)
+    setShootDistance(getShootDistance() - (upgrateIntAtribute(100) + 49));
+}
 
 // -- Getters --
 float Player::getCooldown(void) {return cooldown;}
@@ -175,5 +251,35 @@ void Player::shoot(void) {
         shoots.push_back(new Shoot(getPosX(), getPosY(), getShootSpeed(),
                          getShootRadio(), getShootDistance(), 'D'));
         return;
+    }
+}
+
+// mejoras del jugador
+void Player::upgrate(void) {
+    int num = rand() % 6; // generar numero aleatorio para elegir que mejorar
+
+    // todos los casos posibles
+    switch (num) {
+        case 0: upgrateSpeed(); break;
+        case 1: upgrateRadio(); break;
+        case 2: upgrateCooldown(); break;
+        case 3: upgrateShootSpeed(); break;
+        case 4: upgrateShootRadio(); break;
+        case 5: upgrateShootDistance(); break;
+    }
+}
+
+// downgrate del jugador
+void Player::downgrate(void) {
+    int num = rand() % 6; // generar numero aleatorio para elegir que empeorar
+
+    // todos los casos posibles
+    switch (num) {
+        case 0: downgrateSpeed(); break;
+        case 1: downgrateRadio(); break;
+        case 2: downgrateCooldown(); break;
+        case 3: downgrateShootSpeed(); break;
+        case 4: downgrateShootRadio(); break;
+        case 5: downgrateShootDistance(); break;
     }
 }
