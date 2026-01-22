@@ -32,6 +32,11 @@ int Game::update(void) {
         }
     }
 
+    // activar el menu de pausa
+    if (IsKeyPressed(KEY_ENTER)) {
+        return 2;
+    }
+
     // modificar el timer del jugador
     player.setTimer(player.getTimer() + GetFrameTime());
 

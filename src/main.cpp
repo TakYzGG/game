@@ -8,10 +8,11 @@
 #include "main_menu.h"
 #include "game.h"
 #include "upgrate.h"
+#include "pause.h"
 #include "player.h"
 using namespace std;
 
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, UPGRATE, ENDING } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, UPGRATE, PAUSE, ENDING } GameScreen;
 
 // -- Funcion principal --
 int main(void) {
@@ -32,6 +33,7 @@ int main(void) {
     MainMenu menu;
     Game game;
     Upgrate upgrate;
+    Pause pause;
 
     player.setPosition();
 
@@ -46,8 +48,14 @@ int main(void) {
                 break;
 
             case GAMEPLAY:
-                if (game.update()) {
+                int retorno;
+                retorno = game.update();
+                if (retorno == 1) {
                     currentScreen = UPGRATE;
+                }
+
+                if (retorno == 2) {
+                    currentScreen = PAUSE;
                 }
                 break;
 
@@ -56,6 +64,11 @@ int main(void) {
                     currentScreen = GAMEPLAY;
                 }
                 break;
+
+            case PAUSE:
+                if (pause.update()) {
+                    currentScreen = GAMEPLAY;
+                }
         }
 
         // draw
@@ -71,6 +84,10 @@ int main(void) {
 
             case UPGRATE:
                 upgrate.draw();
+                break;
+
+            case PAUSE:
+                pause.draw();
                 break;
         }
         EndDrawing();
