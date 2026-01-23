@@ -14,6 +14,7 @@
 Game::Game()
     :interface()
     {
+        generateEnemys(round);
     }
 
 // -- Methods --
@@ -23,13 +24,12 @@ int Game::update(void) {
 
     // si no hay mas enemigos los genera nuevamente
     if (enemys.size() == 0) {
-        round += 1;
-        player.setPoints(player.getPoints() + 1);
         generateEnemys(round);
+        player.setPoints(player.getPoints() + 1);
 
-        if (round % 3 == 0) {
-            return 1;
-        }
+        if (round % 3 == 0) mejoras = 1;
+
+        round += 1;
     }
 
     // activar el menu de pausa
@@ -70,6 +70,11 @@ int Game::update(void) {
     // actualizar disparos
     if (shoots.size() > 0) travelShoots();
 
+    if (mejoras) {
+        mejoras = 0;
+        return 1;
+    }
+
     return 0;
 
 }
@@ -77,9 +82,10 @@ int Game::update(void) {
 // actualizar GUI
 void Game::draw(void) {
     ClearBackground(WHITE);
-    interface.drawHudDebbug();
+    //interface.drawHudDebbug();
     interface.drawHud();
     interface.drawShoots();
     interface.drawPlayer();
     interface.drawEnemys();
+    DrawText(TextFormat("Ronda: %d", round), 360, 580, 20, BLACK);
 }

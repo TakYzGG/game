@@ -11,7 +11,8 @@ class Game {
     private:
         // -- Atributes --
         Interface interface;
-        int round = 0;
+        int round = 1;
+        int mejoras = 0;
 
     public:
         // -- Constructor --

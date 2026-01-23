@@ -23,13 +23,13 @@ void Interface::drawHudDebbug(void) {
 
 // dibujar la hud del juego
 void Interface::drawHud(void) {
-    DrawText(TextFormat("Speed: %f", player.getSpeed()), 10, 10, 20, BLACK);
-    DrawText(TextFormat("Radio: %d", player.getRadio()), 10, 30, 20, BLACK);
-    DrawText(TextFormat("Cooldown: %f", player.getCooldown()), 10, 110, 20, BLACK);
-    DrawText(TextFormat("Shoot distance: %f", player.getShootDistance()), 10, 50, 20, BLACK);
-    DrawText(TextFormat("Shoot speed: %f", player.getShootSpeed()), 10, 70, 20, BLACK);
-    DrawText(TextFormat("Shoot radio: %d", player.getShootRadio()), 10, 90, 20, BLACK);
-    DrawText(TextFormat("Puntos: %d", player.getPoints()), 10, 130, 20, BLACK);
+    DrawText("Estadisticas:", 10, 10, 20, BLACK);
+    DrawText(TextFormat("Velocidad: %.2f", player.getSpeed()), 10, 30, 20, RED);
+    DrawText(TextFormat("Tamano: %d", player.getRadio()), 10, 50, 20, RED);
+    DrawText(TextFormat("Fire rate: %.2f", player.getCooldown()), 10, 70, 20, RED);
+    DrawText(TextFormat("Velocidad disparo: %.2f", player.getShootSpeed()), 10, 90, 20, BLUE);
+    DrawText(TextFormat("Tamano disparo: %d", player.getShootRadio()), 10, 110, 20, BLUE);
+    DrawText(TextFormat("Distancia: %.0f", player.getShootDistance()), 10, 130, 20, BLUE);
 
     DrawText(TextFormat("FPS: %d", GetFPS()), 700, 10, 20, BLACK);
 }
