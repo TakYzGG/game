@@ -20,9 +20,6 @@ class Player: public GenericEntity {
         int points;
 
         // -- Private Methods --
-        int upgrateIntAtribute(int max);
-        float upgrateFloatAtribute(int max); // max = 5 | upgrate_max = 0.50
-
         void upgrateSpeed(void);
         void upgrateRadio(void);
         void upgrateCooldown(void);

@@ -28,78 +28,53 @@ Player::Player()
     }
 
 // -- Private Methods --
-int Player::upgrateIntAtribute(int max) {
-    int upgrate = 0;
-    int n = rand() % max;
-
-    for (int i = 0; i <= n; i++) {
-        upgrate++;
-    }
-
-    return upgrate;
-}
-
-float Player::upgrateFloatAtribute(int max) {
-    float upgrate = 0.0f;
-    int n = rand() % max; // maximo 0.50
-
-    for (int i = 0; i <= n; i++) {
-        upgrate += 0.10f;
-    }
-
-    return upgrate;
-}
-
-// mejoras
 void Player::upgrateSpeed(void) {
-    setSpeed(getSpeed() + upgrateFloatAtribute(5));
+    setSpeed(getSpeed() + 0.10f);
 }
 
 void Player::upgrateRadio(void) {
-    setRadio(getRadio() - upgrateIntAtribute(3));
+    setRadio(getRadio() - 1);
 }
 
 void Player::upgrateCooldown(void) {
-    setCooldown(getCooldown() - upgrateFloatAtribute(3));
+    setCooldown(getCooldown() - 0.10f);
 }
 
 void Player::upgrateShootSpeed(void) {
-    setShootSpeed(getShootSpeed() + upgrateFloatAtribute(4));
+    setShootSpeed(getShootSpeed() + 0.10f);
 }
 
 void Player::upgrateShootRadio(void) {
-    setShootRadio(getShootRadio() + upgrateIntAtribute(3));
+    setShootRadio(getShootRadio() + 1);
 }
 
 void Player::upgrateShootDistance(void) {
-    // el valor minimo de esto es 50 (49 de la suma y 1 del minimo de la func)
-    setShootDistance(getShootDistance() + (upgrateIntAtribute(100) + 49));
+    setShootDistance(getShootDistance() + 50);
 }
 
 // downgrate
 void Player::downgrateSpeed(void) {
-    setSpeed(getSpeed() - upgrateFloatAtribute(5));
+    setSpeed(getSpeed() - 0.10f);
 }
 
 void Player::downgrateRadio(void) {
-    setRadio(getRadio() + upgrateIntAtribute(3));
+    setRadio(getRadio() + 1);
 }
 
 void Player::downgrateCooldown(void) {
-    setCooldown(getCooldown() + upgrateFloatAtribute(3));
+    setCooldown(getCooldown() + 0.10f);
 }
 
 void Player::downgrateShootSpeed(void) {
-    setShootSpeed(getShootSpeed() - upgrateFloatAtribute(4));
+    setShootSpeed(getShootSpeed() - 0.10f);
 }
 
 void Player::downgrateShootRadio(void) {
-    setShootRadio(getShootRadio() - upgrateIntAtribute(3));
+    setShootRadio(getShootRadio() - 1);
 }
 
 void Player::downgrateShootDistance(void) {
-    // el valor minimo de esto es 50 (49 de la suma y 1 del minimo de la func)
-    setShootDistance(getShootDistance() - (upgrateIntAtribute(100)));
+    setShootDistance(getShootDistance() - 50);
 }
 
 // -- Getters --
