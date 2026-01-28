@@ -6,6 +6,7 @@
 
 #include "generic_entity.h"
 #include "shoot.h"
+#include "min_max_atributes.h"
 #include "functions.h"
 using namespace std;
 
@@ -31,8 +32,19 @@ int Shoot::getStatus(void) {return status;}
 // -- Setters --
 // modificar la distancia maxima que puede recorrer el disparo
 void Shoot::setDistance(float distance) {
-    if ((distance >= 50) && (distance <= 350)) {
+    if ((distance >= MINDISTANCE) && (distance <= MAXDISTANCE)) {
         this->distance = distance;
+        return;
+    }
+
+    if (distance < MINDISTANCE) {
+        this->distance = MINDISTANCE;
+        return;
+    }
+
+    if (distance > MAXDISTANCE) {
+        this->distance = MAXDISTANCE;
+        return;
     }
 }
 

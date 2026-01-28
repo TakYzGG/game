@@ -4,6 +4,7 @@
 #include <raylib.h>
 
 #include "generic_entity.h"
+#include "min_max_atributes.h"
 
 // -- Generic Class --
 // -- Constructor --
@@ -23,39 +24,47 @@ int GenericEntity::getRadio(void) {return radio;}
 // -- Setters --
 // modificar posicion x
 void GenericEntity::setPosX(float x) {
-    if ((x >= 0.0f) && (x <= GetScreenWidth())) {
+    if ((x >= MINPOSX) && (x <= MAXPOSX)) {
         this->x = x;
     }
 }
 
 // modificar posicion y
 void GenericEntity::setPosY(float y) {
-    if ((y >= 0.0f) && (y <= GetScreenHeight())) {
+    if ((y >= MINPOSY) && (y <= MAXPOSY)) {
         this->y = y;
     }
 }
 
 // modificar velocidad
 void GenericEntity::setSpeed(float speed) {
-    if ((speed >= 0.5f) && (speed <= 5.0f)) { // talvez 5 es mucho pero XD
+    if ((speed >= MINSPEED) && (speed <= MAXSPEED)) {
         this->speed = speed;
+    }
+
+    if (speed < MINSPEED) {
+        this->speed = MINSPEED;
+    }
+
+    if (speed > MAXSPEED) {
+        this->speed = MAXSPEED;
     }
 }
 
 // modificar radio
 void GenericEntity::setRadio(int radio) {
-    if ((radio >= 5) && (radio <= 10)) {
+    if ((radio >= MINRADIO) && (radio <= MAXRADIO)) {
         this->radio = radio;
         return;
     }
 
-    if (radio > 10) {
-        this->radio = 10;
+    if (radio < MINRADIO) {
+        this->radio = MINRADIO;
         return;
     }
 
-    if (radio < 5) {
-        this->radio = 5;
+    if (radio > MAXRADIO) {
+        this->radio = MAXRADIO;
         return;
     }
 }

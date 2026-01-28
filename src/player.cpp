@@ -7,6 +7,7 @@
 
 #include "player.h"
 #include "generic_entity.h"
+#include "min_max_atributes.h"
 #include "shoot.h"
 #include "functions.h"
 
@@ -95,72 +96,72 @@ void Player::setPosition(void) {
 
 // modificar el cooldown entre disparos
 void Player::setCooldown(float cooldown) {
-    if ((cooldown >= 0.1f) && (cooldown <= 1.0f)) {
+    if ((cooldown >= MINCOOLDOWN) && (cooldown <= MAXCOOLDOWN)) {
         this->cooldown = cooldown;
         return;
     }
-
-    if (cooldown > 1.0f) {
-        this->cooldown = 1.0f;
+ 
+    if (cooldown < MINCOOLDOWN) {
+        this->cooldown = MINCOOLDOWN;
         return;
     }
 
-    if (cooldown < 0.1f) {
-        this->cooldown = 0.1f;
+    if (cooldown > MAXCOOLDOWN) {
+        this->cooldown = MAXCOOLDOWN;
         return;
     }
 }
 
 // modificar la velocidad de los disparos
 void Player::setShootSpeed(float speed) {
-    if ((speed >= 0.5f) && (speed <= 2.0f)) {
+    if ((speed >= MINSPEED) && (speed <= MAXSPEED)) {
         this->shootSpeed = speed;
         return;
     }
 
-    if (speed > 2.0f) {
-        this->shootSpeed = 2.0f;
+    if (speed < MINSPEED) {
+        this->shootSpeed = MINSPEED;
         return;
     }
 
-    if (speed < 0.5f) {
-        this->shootSpeed = 0.5f;
+    if (speed > MAXSPEED) {
+        this->shootSpeed = MAXSPEED;
         return;
     }
 }
 
 // modificar el radio de los disparos
 void Player::setShootRadio(int radio) {
-    if ((radio >= 5) && (radio <= 10)) {
+    if ((radio >= MINRADIO) && (radio <= MAXRADIO)) {
         this->shootRadio = radio;
         return;
     }
 
-    if (radio > 10) {
-        this->shootRadio = 10;
+    if (radio < MINRADIO) {
+        this->shootRadio = MAXRADIO;
         return;
     }
 
-    if (radio < 5) {
-        this->shootRadio = 5;
+    if (radio > MAXRADIO) {
+        this->shootRadio = MAXRADIO;
         return;
     }
 }
 
 // modificar la distancia maxima de los disparos
 void Player::setShootDistance(float distance) {
-    if ((distance >= 50.0f) && (distance <= 350.0f)) {
+    if ((distance >= MINDISTANCE) && (distance <= MAXDISTANCE)) {
         this->shootDistance = distance;
         return;
     }
 
-    if (distance < 50.0f) {
-        this->shootDistance = 50;
+    if (distance < MINDISTANCE) {
+        this->shootDistance = MINDISTANCE;
         return;
     }
 
-    if (distance > 350.0f) {
-        this->shootDistance = 350;
+    if (distance > MAXDISTANCE) {
+        this->shootDistance = MAXDISTANCE;
         return;
     }
 }
