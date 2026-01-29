@@ -6,6 +6,7 @@
 
 #include "upgrate.h"
 #include "player.h"
+#include "functions.h"
 
 using namespace std; // esto es temporal
 
@@ -65,8 +66,8 @@ int Upgrate::update(void) {
 
 void Upgrate::draw(void) {
     ClearBackground(GRAY);
-    DrawText("1. Mejora basica [3 puntos]", 300, 100, 20, BLACK);
-    DrawText("2. Mejora normal [6 puntos]", 300, 120, 20, BLACK);
-    DrawText("3. Mejora pro [9 puntos]", 300, 140, 20, BLACK);
-    DrawText("4. Skip mejoras", 300, 160, 20, BLACK);
+    DrawText(basic_upgrate, calcCenterText(basic_upgrate, font_size), 100, font_size, RED);
+    DrawText(normal_upgrate, calcCenterText(normal_upgrate, font_size), 130, font_size, YELLOW);
+    DrawText(pro_upgrate, calcCenterText(pro_upgrate, font_size), 160, font_size, GREEN);
+    DrawText(skip_upgrate, calcCenterText(skip_upgrate, font_size), 190, font_size, BLACK);
 }

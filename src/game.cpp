@@ -2,12 +2,14 @@
 
 // -- Librerias --
 #include <raylib.h>
+#include <string>
 
 #include "game.h"
 #include "shoot.h"
 #include "player.h"
 #include "interface.h"
 #include "enemy.h"
+#include "functions.h"
 
 // -- Game Class --
 // -- Constructor --
@@ -87,5 +89,9 @@ void Game::draw(void) {
     interface.drawShoots();
     interface.drawPlayer();
     interface.drawEnemys();
-    DrawText(TextFormat("Ronda: %d", round), 360, 580, 20, BLACK);
+
+    // README: hacer que esta linea no sea cancer visual
+    DrawText(TextFormat("Ronda: %d", round),
+            calcCenterText(("Ronda" + std::to_string(round)).c_str(), 20),
+            580, 20, BLACK);
 }
