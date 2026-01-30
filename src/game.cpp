@@ -17,9 +17,15 @@ Game::Game()
     :interface()
     {
         generateEnemys(round);
+        updateRoundStr();
     }
 
 // -- Methods --
+// actualizar el str de la ronda
+void Game::updateRoundStr(void) {
+    this-> roundStr = "Ronda: " + std::to_string(round);
+}
+
 // actualizar datos del juego
 int Game::update(void) {
     // -- Update --
@@ -32,6 +38,7 @@ int Game::update(void) {
         if (round % 3 == 0) mejoras = 1;
 
         round += 1;
+        updateRoundStr();
     }
 
     // activar el menu de pausa
@@ -89,9 +96,5 @@ void Game::draw(void) {
     interface.drawShoots();
     interface.drawPlayer();
     interface.drawEnemys();
-
-    // README: hacer que esta linea no sea cancer visual
-    DrawText(TextFormat("Ronda: %d", round),
-            calcCenterText(("Ronda" + std::to_string(round)).c_str(), 20),
-            580, 20, BLACK);
+    DrawText(roundStr.c_str(), calcCenterText(roundStr.c_str(), 20), 580, 20, BLACK);
 }
