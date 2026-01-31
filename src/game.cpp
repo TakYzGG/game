@@ -16,8 +16,6 @@
 Game::Game()
     :interface()
     {
-        generateEnemys(round);
-        updateRoundStr();
     }
 
 // -- Methods --
@@ -35,7 +33,7 @@ int Game::update(void) {
         generateEnemys(round);
         player.setPoints(player.getPoints() + 1);
 
-        if (round % 3 == 0) mejoras = 1;
+        if ((round != 0) && (round % 3 == 0)) mejoras = 1;
 
         round += 1;
         updateRoundStr();
@@ -73,6 +71,7 @@ int Game::update(void) {
     // actualizar enemigos
     for (int i = 0; i < enemys.size(); i++) {
         enemys[i]->move();
+        enemys[i]->killPlayer();
         enemys[i]->remove();
     }
 
@@ -82,6 +81,10 @@ int Game::update(void) {
     if (mejoras) {
         mejoras = 0;
         return 1;
+    }
+
+    if (player.getIsDead()) {
+        return 3;
     }
 
     return 0;
@@ -97,4 +100,13 @@ void Game::draw(void) {
     interface.drawPlayer();
     interface.drawEnemys();
     DrawText(roundStr.c_str(), calcCenterText(roundStr.c_str(), 20), 580, 20, BLACK);
+}
+
+void Game::restart(void) {
+    round = 0;
+    mejoras = 0;
+    player.setPosition();
+    player.setIsDead(0);
+    enemys.clear();
+    shoots.clear();
 }

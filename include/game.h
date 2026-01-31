@@ -13,7 +13,7 @@ class Game {
     private:
         // -- Atributes --
         Interface interface;
-        int round = 1;
+        int round = 0;
         int mejoras = 0;
         std::string roundStr;
 
@@ -25,6 +25,7 @@ class Game {
         void updateRoundStr(void);
         int update(void);
         void draw(void);
+        void restart(void);
 };
 
 #endif

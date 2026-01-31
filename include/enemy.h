@@ -21,6 +21,7 @@ class Enemy: public GenericEntity {
         void move(void);
         int isDead(void);
         void remove(void);
+        void killPlayer(void);
 };
 
 extern vector<Enemy*> enemys;

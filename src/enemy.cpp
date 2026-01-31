@@ -78,10 +78,24 @@ void Enemy::remove(void) {
 
 // -- Generar a los enemigos --
 void generateEnemys(int round) {
-    int n = (rand() % round) + (rand() % 3) + 3;
+    int num = round + (rand() % 3) + 1;
+    int n = rand() % num + 3;
     for (int i = 0; i < n; i++) {
         int x = rand() % GetScreenWidth();
         int y = rand() % GetScreenHeight();
         enemys.push_back(new Enemy(x, y));
+    }
+}
+
+// -- matar al jugador --
+void Enemy::killPlayer(void) {
+    float dx = player.getPosX() - getPosX();
+    float dy = player.getPosY() - getPosY();
+
+    float distSq = dx*dx + dy*dy;
+    float radiusSum = (player.getRadio()/2) + (getRadio()/2);
+
+    if (distSq <= radiusSum * radiusSum) {
+        player.setIsDead(1);
     }
 }

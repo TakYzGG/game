@@ -18,6 +18,7 @@ class Player: public GenericEntity {
         int firing;
         int wasFiring;
         int points;
+        int isDead;
 
         // -- Private Methods --
         void upgrateSpeed(void);
@@ -47,6 +48,7 @@ class Player: public GenericEntity {
         int getFiring(void);
         int getWasFiring(void);
         int getPoints(void);
+        int getIsDead(void);
         
         // -- Setters --
         void setPosition(void);
@@ -58,6 +60,7 @@ class Player: public GenericEntity {
         void setFiring(int firing);
         void setWasFiring(int wasFiring);
         void setPoints(int points);
+        void setIsDead(int state);
 
         // -- Methods --
         void move(void);

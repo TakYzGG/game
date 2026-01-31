@@ -43,6 +43,7 @@ int main(void) {
         switch (currentScreen) {
             case TITLE:
                 if (menu.update()) {
+                    if (player.getIsDead()) game.restart();
                     currentScreen = GAMEPLAY;
                 }
                 break;
@@ -50,12 +51,10 @@ int main(void) {
             case GAMEPLAY:
                 int retorno;
                 retorno = game.update();
-                if (retorno == 1) {
-                    currentScreen = UPGRATE;
-                }
-
-                if (retorno == 2) {
-                    currentScreen = PAUSE;
+                switch (retorno) {
+                    case 1: currentScreen = UPGRATE; break;
+                    case 2: currentScreen = PAUSE; break;
+                    case 3: currentScreen = TITLE; break;
                 }
                 break;
 

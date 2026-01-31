@@ -10,6 +10,7 @@
 #include "min_max_atributes.h"
 #include "shoot.h"
 #include "functions.h"
+#include "enemy.h"
 
 Player player;
 
@@ -26,6 +27,7 @@ Player::Player()
         setFiring(0);
         setWasFiring(0);
         setPoints(0);
+        setIsDead(0);
     }
 
 // -- Private Methods --
@@ -87,6 +89,7 @@ float Player::getTimer(void) {return timer;}
 int Player::getFiring(void) {return firing;}
 int Player::getWasFiring(void) {return wasFiring;}
 int Player::getPoints(void) {return points;}
+int Player::getIsDead(void) {return isDead;}
 
 // -- Setters --
 void Player::setPosition(void) {
@@ -186,6 +189,10 @@ void Player::setWasFiring(int wasFiring) {
 
 void Player::setPoints(int points) {
     this->points = points;
+}
+
+void Player::setIsDead(int state) {
+    this->isDead = state;
 }
 
 // -- Methods --
