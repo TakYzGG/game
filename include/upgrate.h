@@ -16,6 +16,7 @@ class Upgrate {
         void basicUpgrate(void);
         void normalUpgrate(void);
         void bestUpgrate(void);
+        int exec_buttons(void);
         int update(void);
         void draw(void);
 };

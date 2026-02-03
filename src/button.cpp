@@ -56,5 +56,5 @@ void Button::drawRectangle(Color color) {
 }
 
 void Button::drawText(Color color) {
-    DrawText(TextFormat("%s", text), x, y, 20, color);
+    DrawText(TextFormat("%s", text), centerPosX(), centerPosY(), 20, color);
 }
