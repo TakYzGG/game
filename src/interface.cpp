@@ -19,6 +19,8 @@ void Interface::drawHudDebbug(void) {
     DrawText(TextFormat("Player Y: %f", player.getPosY()), 10, 540, 20, BLACK);
     DrawText(TextFormat("Player id: %p", &player), 10, 560, 20, BLACK);
     DrawText(TextFormat("Count shoots: %d", shoots.size()), 10, 580, 20, BLACK);
+    DrawCircle(player.getPosX(), player.getPosY(), 80, YELLOW);
+
 }
 
 // dibujar la hud del juego

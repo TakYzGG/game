@@ -94,7 +94,7 @@ int Game::update(void) {
 // actualizar GUI
 void Game::draw(void) {
     ClearBackground(WHITE);
-    //interface.drawHudDebbug();
+    interface.drawHudDebbug();
     interface.drawHud();
     interface.drawShoots();
     interface.drawPlayer();

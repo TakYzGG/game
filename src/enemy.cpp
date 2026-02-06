@@ -4,6 +4,7 @@
 #include <raylib.h>
 #include <bits/stdc++.h>
 #include <vector>
+#include <iostream> // temp
 
 #include "enemy.h"
 #include "generic_entity.h"
@@ -76,26 +77,33 @@ void Enemy::remove(void) {
     }
 }
 
-// -- Generar a los enemigos --
-void generateEnemys(int round) {
-    int num = round + (rand() % 3) + 1;
-    int n = rand() % num + 3;
-    for (int i = 0; i < n; i++) {
-        int x = rand() % GetScreenWidth();
-        int y = rand() % GetScreenHeight();
-        enemys.push_back(new Enemy(x, y));
-    }
-}
-
 // -- matar al jugador --
 void Enemy::killPlayer(void) {
-    float dx = player.getPosX() - getPosX();
-    float dy = player.getPosY() - getPosY();
+    // hay que mejorar esta linea porque es demaciado fea
+    if (IsCircleInOtherCircle(
+                player.getPosX(), player.getPosY(), player.getRadio(),
+                getPosX(), getPosY(), getRadio())
+            ) player.setIsDead(1);
+}
 
-    float distSq = dx*dx + dy*dy;
-    float radiusSum = (player.getRadio()/2) + (getRadio()/2);
+// -- Generar a los enemigos --
+void generateEnemys(int round) {
+    int i = 0;
+    while (i < 100) {
+        int num = round + (rand() % 3) + 1;
+        int n = rand() % num + 3;
+        int x = rand() % GetScreenWidth();
+        int y = rand() % GetScreenHeight();
 
-    if (distSq <= radiusSum * radiusSum) {
-        player.setIsDead(1);
+        float dx = x - player.getPosX();
+        float dy = y - player.getPosY();
+        float dist = sqrtf(dx * dx + dy * dy);
+
+        if (dist + 8 <= 80) {
+            continue;
+        }
+
+        enemys.push_back(new Enemy(x, y));
+        i++;
     }
 }
