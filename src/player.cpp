@@ -317,3 +317,17 @@ void Player::downgrate(void) {
         case 5: downgrateShootDistance(); cout << "down distance disparo" << endl;break;
     }
 }
+
+void Player::reset(void) {
+    setSpeed(1);
+    setRadio(8);
+    setCooldown(0.5f);
+    setShootSpeed(1.0f);
+    setShootRadio(5);
+    setShootDistance(100);
+    setTimer(0.0f);
+    setFiring(0);
+    setWasFiring(0);
+    setPoints(0);
+    setIsDead(0);
+}

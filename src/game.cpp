@@ -105,8 +105,7 @@ void Game::draw(void) {
 void Game::restart(void) {
     round = 0;
     mejoras = 0;
-    player.setPosition();
-    player.setIsDead(0);
+    player.reset();
     enemys.clear();
     shoots.clear();
 }

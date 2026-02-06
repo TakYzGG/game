@@ -68,6 +68,7 @@ class Player: public GenericEntity {
         void shoot(void);
         void upgrate(void);
         void downgrate(void);
+        void reset(void);
 };
 
 extern Player player;
