@@ -18,7 +18,6 @@ Button buttons[] = {Button(400, 100, 100, 40, "Mejora Basica"),
                     };
 
 int buttons_size = sizeof(buttons) / sizeof(buttons[0]);
-int index = 0;
 
 // -- Upgrate Class --
 Upgrate::Upgrate() {

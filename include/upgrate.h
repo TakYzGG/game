@@ -10,6 +10,7 @@ class Upgrate {
         const char *pro_upgrate = "[3] Mejora pro [9 puntos]";
         const char *skip_upgrate = "[4] Saltar mejoras";
         int font_size = 20;
+        int index = 0;
 
     public:
         Upgrate();
