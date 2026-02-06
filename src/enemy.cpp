@@ -88,10 +88,11 @@ void Enemy::killPlayer(void) {
 
 // -- Generar a los enemigos --
 void generateEnemys(int round) {
+    int num = round + (rand() % 3) + 1;
+    int n = rand() % num + 3;
     int i = 0;
-    while (i < 100) {
-        int num = round + (rand() % 3) + 1;
-        int n = rand() % num + 3;
+
+    while (i < n) {
         int x = rand() % GetScreenWidth();
         int y = rand() % GetScreenHeight();
 
