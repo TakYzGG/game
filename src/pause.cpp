@@ -4,6 +4,7 @@
 #include <raylib.h>
 
 #include "pause.h"
+#include "functions.h"
 
 int Pause::update(void) {
     if (IsKeyPressed(KEY_ENTER)) {
@@ -15,5 +16,5 @@ int Pause::update(void) {
 
 void Pause::draw(void) {
     ClearBackground(GRAY);
-    DrawText("Pausado", 400, 300, 30, RED);
+    DrawText("Pausado", calcCenterText("Pausado", 30), 300, 30, RED);
 }
