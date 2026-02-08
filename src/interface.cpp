@@ -6,14 +6,19 @@
 #include "shoot.h"
 #include "player.h"
 #include "interface.h"
-#include "enemy.h"
+#include "admin_enemys.h"
 
 using namespace std;
+
+Interface::Interface(AdminEnemys *adminEnemys)
+    {
+        this->adminEnemys = adminEnemys;
+    }
 
 // -- Methods --
 // dibujar el hud debbug 
 void Interface::drawHudDebbug(void) {
-    DrawText(TextFormat("Count Enemis: %d", enemys.size()), 10, 480, 20, BLACK);
+    DrawText(TextFormat("Count Enemis: %d", adminEnemys->getEnemysCount()), 10, 480, 20, BLACK);
     DrawText(TextFormat("Player move: %f", GetFrameTime() * 6.0f * (player.getSpeed() * 10.0f) ), 10, 500, 20, BLACK);
     DrawText(TextFormat("Player X: %f", player.getPosX()), 10, 520, 20, BLACK);
     DrawText(TextFormat("Player Y: %f", player.getPosY()), 10, 540, 20, BLACK);
@@ -43,8 +48,8 @@ void Interface::drawPlayer(void) {
 
 // dibujar a los enemigos
 void Interface::drawEnemys(void) {
-    for (int i = 0; i < enemys.size(); i++) {
-        DrawCircle(enemys[i]->getPosX(), enemys[i]->getPosY(), enemys[i]->getRadio(), GREEN);
+    for (int i = 0; i < adminEnemys->getEnemysCount(); i++) {
+        DrawCircle(adminEnemys->getEnemy(i)->getPosX(), adminEnemys->getEnemy(i)->getPosY(), adminEnemys->getEnemy(i)->getRadio(), GREEN);
     }
 }
 

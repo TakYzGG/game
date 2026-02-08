@@ -8,13 +8,14 @@
 #include "shoot.h"
 #include "player.h"
 #include "interface.h"
-#include "enemy.h"
+#include "admin_enemys.h"
 #include "functions.h"
 
 // -- Game Class --
 // -- Constructor --
 Game::Game()
-    :interface()
+    :adminEnemys(),
+    interface(&adminEnemys)
     {
     }
 
@@ -29,8 +30,8 @@ int Game::update(void) {
     // -- Update --
 
     // si no hay mas enemigos los genera nuevamente
-    if (enemys.size() == 0) {
-        generateEnemys(round);
+    if (adminEnemys.getEnemysCount() == 0) {
+        adminEnemys.generate();
         player.setPoints(player.getPoints() + 1);
 
         if ((round != 0) && (round % 3 == 0)) mejoras = 1;
@@ -68,12 +69,7 @@ int Game::update(void) {
     // guardar el ultimo estado de disparo del jugador
     player.setWasFiring(player.getFiring());
 
-    // actualizar enemigos
-    for (int i = 0; i < enemys.size(); i++) {
-        enemys[i]->move();
-        enemys[i]->killPlayer();
-        enemys[i]->remove();
-    }
+    adminEnemys.updateEnemys();
 
     // actualizar disparos
     if (shoots.size() > 0) travelShoots();
@@ -106,6 +102,6 @@ void Game::restart(void) {
     round = 0;
     mejoras = 0;
     player.reset();
-    enemys.clear();
+    adminEnemys.reset(); 
     shoots.clear();
 }

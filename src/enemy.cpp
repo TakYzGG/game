@@ -2,19 +2,12 @@
 
 // -- Librerias --
 #include <raylib.h>
-#include <bits/stdc++.h>
-#include <vector>
-#include <iostream> // temp
 
 #include "enemy.h"
 #include "generic_entity.h"
 #include "player.h"
 #include "shoot.h"
 #include "functions.h"
-
-using namespace std;
-
-vector<Enemy*> enemys;
 
 // -- Enemy Class --
 // -- Constructor --
@@ -68,15 +61,6 @@ int Enemy::isDead(void) {
     return 0;
 }
 
-// eliminar un disparo del vector
-void Enemy::remove(void) {
-    auto it = find(enemys.begin(), enemys.end(), this);
-    if (it != enemys.end() && (*it)->isDead()) {
-        delete *it;
-        enemys.erase(it);
-    }
-}
-
 // -- matar al jugador --
 void Enemy::killPlayer(void) {
     // hay que mejorar esta linea porque es demaciado fea
@@ -84,27 +68,4 @@ void Enemy::killPlayer(void) {
                 player.getPosX(), player.getPosY(), player.getRadio(),
                 getPosX(), getPosY(), getRadio())
             ) player.setIsDead(1);
-}
-
-// -- Generar a los enemigos --
-void generateEnemys(int round) {
-    int num = round + (rand() % 3) + 1;
-    int n = rand() % num + 3;
-    int i = 0;
-
-    while (i < n) {
-        int x = rand() % GetScreenWidth();
-        int y = rand() % GetScreenHeight();
-
-        float dx = x - player.getPosX();
-        float dy = y - player.getPosY();
-        float dist = sqrtf(dx * dx + dy * dy);
-
-        if (dist + 8 <= 80) {
-            continue;
-        }
-
-        enemys.push_back(new Enemy(x, y));
-        i++;
-    }
 }

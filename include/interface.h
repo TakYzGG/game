@@ -3,6 +3,8 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
+#include "admin_enemys.h"
+
 // -- Clase de la interfaz --
 class Interface {
     private:
@@ -10,8 +12,10 @@ class Interface {
         int screenWidth;
         int screenHeight;
         int FPS;
+        AdminEnemys *adminEnemys;
 
     public:
+        Interface(AdminEnemys *adminEnemys);
         // -- Methods --
         void drawHudDebbug(void);
         void drawHud(void);
